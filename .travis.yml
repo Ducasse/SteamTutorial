@@ -8,7 +8,7 @@ smalltalk:
 
 install:
     # Pillar installation
-    - git clone https://github.com/pillar-markup/pillar.git .pillar -b feature/server-command  # Clone pillar
+    - git clone https://github.com/samakhov/pillar.git .pillar -b feature/server-command  # Clone pillar
     - cd .pillar && ./scripts/build.sh && cd ..
 
 script:
