@@ -15,15 +15,15 @@ url : https://github.com/guillep/steam.git
 
 repository : src
 
-+Load Steam's Github repository with Iceberg>file://figures/iceberg.png|width=90|label=iceberg+
++Load Steam's Github repository with Iceberg>file://figures/iceberg.png|label=iceberg+
 
 Now you have to install the baseline of steam.
 It will download all needed packages.
-+Steam installation with Monticello>file://figures/monticello.png|width=90|label=monticello+
++Steam installation with Monticello>file://figures/monticello.png|width=100|label=monticello+
 
 
 If Icebarg gives you the choice between load existing or incoming version you can choose the first one if the version is greater (higher).
 It will take few minutes (usually aroud 4 or 5 min).
 
 
-Ok that's it all you'll need is here, you can go to the ""Initialization"" part
+Ok that's it ! All you'll need is here, now you can go to the ""*Initialization>initialization.pillar*"" part.

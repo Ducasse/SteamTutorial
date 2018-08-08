@@ -8,7 +8,17 @@
 
 ! Initialization
 
-Now we need to create a subclass of ^^STApplicationRootComponent^^, you can name it STExampleApp for example.
+First let's create a simple new STObject subclass. For example let's call it ==STCategory==. With a inctance variable "title" which will be just a string representing the name.
+[[[lab­el=­|­lan­gua­ge=­Sma­lltalk
+STObject subclass: #STCategory
+	instanceVariableNames: 'title'
+	classVariableNames: ''
+	package: 'Steam-Example'
+]]]
+
+
+
+Now we need to create a subclass of ==STApplicationRootComponent==, you can name it STExampleApp for example.
 [[[lab­el=­STApplicationRootComponent class|­lan­gua­ge=­Sma­lltalk
 STApplicationRootComponent subclass: #STExampleApp
 	instanceVariableNames: ''
@@ -19,8 +29,7 @@ STApplicationRootComponent subclass: #STExampleApp
 To make it work we need to override some superclass methods.
 
 We begin with the initialization :
-[[[lab­el=­start|­lan­gua­ge=­Sma­lltalk
-STExampleApp startOn: 8181.
+[[[lab­el=­|­lan­gua­ge=­Sma­lltalk
 ]]]
 
 
