@@ -141,7 +141,7 @@ repository : src
 <p>
 <a id="iceberg"></a>
 <figure>
-	<img src="/figures/iceberg.png" width="90%" id="iceberg" alt="Load Steam's Github repository with Iceberg"/>
+	<img src="/figures/iceberg.png" id="iceberg" alt="Load Steam's Github repository with Iceberg"/>
 	<figcaption>Load Steam's Github repository with Iceberg</figcaption>
 </figure>
 </p>
@@ -150,7 +150,7 @@ Now you have to install the baseline of steam.
 It will download all needed packages.
 <a id="monticello"></a>
 <figure>
-	<img src="/figures/monticello.png" width="90%" id="monticello" alt="Steam installation with Monticello"/>
+	<img src="/figures/monticello.png" width="100%" id="monticello" alt="Steam installation with Monticello"/>
 	<figcaption>Steam installation with Monticello</figcaption>
 </figure>
 </p>
@@ -161,13 +161,22 @@ It will take few minutes (usually aroud 4 or 5 min).
 </p>
 
 <p>
-Ok that's it all you'll need is here, you can go to the <strong>Initialization</strong> part
+Ok that's it ! All you'll need is here, now you can go to the <strong><a href="">Initialization</a></strong> part.
 
 </p>
 <h1>Initialization</h1>
 
 <p>
-Now we need to create a subclass of <sup>STApplicationRootComponent</sup>, you can name it STExampleApp for example.
+First let's create a simple new STObject subclass. For example let's call it <code>STCategory</code>. With a inctance variable &quot;title&quot; which will be just a string representing the name.
+</p><figure><pre><code>STObject subclass: #STCategory
+	instanceVariableNames: 'title'
+	classVariableNames: ''
+	package: 'Steam-Example'</code></pre><figcaption></figcaption></figure>
+
+
+
+<p>
+Now we need to create a subclass of <code>STApplicationRootComponent</code>, you can name it STExampleApp for example.
 </p><figure><pre><code>STApplicationRootComponent subclass: #STExampleApp
 	instanceVariableNames: ''
 	classVariableNames: ''
@@ -178,7 +187,7 @@ To make it work we need to override some superclass methods.
 </p>
 <p>
 We begin with the initialization :
-</p><figure><pre><code>STExampleApp startOn: 8181.</code></pre><figcaption></figcaption></figure>
+</p><figure><pre><code>]]]
 
 
 
@@ -188,9 +197,9 @@ We begin with the initialization :
 
 
 
-<p>
 After all is done, you can open a Playground and type execute this code:
-</p><figure><pre><code>STExampleApp startOn: 8181.</code></pre><figcaption></figcaption></figure>
+[[[lab­el=­start|­lan­gua­ge=­Sma­lltalk
+STExampleApp startOn: 8181.</code></pre><figcaption></figcaption></figure>
 
 <p>
 this will create the web application on port 8181.
