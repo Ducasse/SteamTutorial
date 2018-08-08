@@ -1,0 +1,39 @@
+{ "profile" : [
+	{ "name"	: "Steam",
+		"avatar": "avatar.png",
+		"post"	: "Research Engineer",
+		"firm"	: "Space Laboratory" }
+	]
+}
+
+! Initialization
+
+Now we need to create a subclass of ^^STApplicationRootComponent^^, you can name it STExampleApp for example.
+[[[lab­el=­STApplicationRootComponent class|­lan­gua­ge=­Sma­lltalk
+STApplicationRootComponent subclass: #STExampleApp
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Steam-Example'
+]]]
+
+To make it work we need to override some superclass methods.
+
+We begin with the initialization :
+[[[lab­el=­start|­lan­gua­ge=­Sma­lltalk
+STExampleApp startOn: 8181.
+]]]
+
+
+
+
+
+
+
+
+
+After all is done, you can open a Playground and type execute this code:
+[[[lab­el=­start|­lan­gua­ge=­Sma­lltalk
+STExampleApp startOn: 8181.
+]]]
+
+this will create the web application on port 8181.

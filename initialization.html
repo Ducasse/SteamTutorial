@@ -132,43 +132,36 @@
   </div>
   <div class="col-xs-12 col-md-8">
 
-	<h1>Installation</h1>
+	<h1>Initialization</h1>
 
 <p>
-First you need a Pharo 6.1 image, if you don't have it you can create a new one.
-Open Iceberg and clone Steam's github repository.
-</p>
-<p>
-url : https://github.com/guillep/steam.git
-</p>
-<p>
-repository : src
-</p>
-<p>
-<a id="iceberg"></a>
-<figure>
-	<img src="figures/iceberg.png" width="90%" id="iceberg" alt="Load Steam's Github repository with Iceberg"/>
-	<figcaption>Load Steam's Github repository with Iceberg</figcaption>
-</figure>
-</p>
-<p>
-Now you have to install the baseline of steam.
-It will download all needed packages.
-<a id="monticello"></a>
-<figure>
-	<img src="figures/monticello.png" width="90%" id="monticello" alt="Steam installation with Monticello"/>
-	<figcaption>Steam installation with Monticello</figcaption>
-</figure>
-</p>
+Now we need to create a subclass of <sup>STApplicationRootComponent</sup>, you can name it STExampleApp for example.
+</p><figure><pre><code>STApplicationRootComponent subclass: #STExampleApp
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Steam-Example'</code></pre><figcaption></figcaption></figure>
 
 <p>
-If Icebarg gives you the choice between load existing or incoming version you can choose the first one if the version is greater (higher).
-It will take few minutes (usually aroud 4 or 5 min).
+To make it work we need to override some superclass methods.
 </p>
+<p>
+We begin with the initialization :
+</p><figure><pre><code>STExampleApp startOn: 8181.</code></pre><figcaption></figcaption></figure>
+
+
+
+
+
+
+
+
 
 <p>
-Ok that's it all you'll need is here, you can go to the <strong>Initialization</strong> part
+After all is done, you can open a Playground and type execute this code:
+</p><figure><pre><code>STExampleApp startOn: 8181.</code></pre><figcaption></figcaption></figure>
 
+<p>
+this will create the web application on port 8181.
 </p>
 
   </div>

@@ -1,4 +1,5 @@
 
 ${inputFile:path=installation.pillar}$
+${inputFile:path=initialization.pillar}$
 ${inputFile:path=index.pillar}$
 ${inputFile:path=coordinates.pillar}$
