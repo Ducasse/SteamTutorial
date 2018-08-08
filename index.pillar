@@ -1,13 +1,9 @@
-{
-	"profile" : [
-		{
-			"name": "John Doe",
-	 		"avatar": "avatar.png",
-     			"post": "Research Engineer",
-     			"firm": "Space Laboratory"
-		}
+{ "profile" : [
+	{ "name"	: "Steam",
+		"avatar": "avatar.png",
+		"post"	: "Research Engineer",
+		"firm"	: "Space Laboratory" }
 	]
-
 }
 
 ! About me

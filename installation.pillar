@@ -1,20 +1,28 @@
-{
-	"profile" : [
-		{
-			"name": "Steam",
-	 		"avatar": "avatar.png",
-     			"post": "Research Engineer",
-     			"firm": "Space Laboratory"
-		}
+{ "profile" : [
+	{ "name"	: "Steam",
+		"avatar": "avatar.png",
+		"post"	: "Research Engineer",
+		"firm"	: "Space Laboratory" }
 	]
-
 }
 
 ! Installation
 
-First install Pharo 6.1.
-Open Iceberg and search for 
+First you need a Pharo 6.1 image, if you don't have it you can create a new one.
+Open Iceberg and clone Steam's github repository.
+url : https://github.com/guillep/steam.git
+repository : src
 
-user : guille
-project : steam
+Now you have to install the baseline of steam.
+It will download all needed packages.
 
+If Icebarg gives you the choice between load existing or incoming version you can choose the first one if the version is greater (highter).
+It will take few minutes (usually aroud 2 or 3 min).
+
+
+After all is done, you can open a Playground and type execute this code:
+```
+STExampleApp startOn: 8181.
+```
+
+this will create the web application on port 8181.

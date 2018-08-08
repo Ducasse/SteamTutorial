@@ -1,6 +1,4 @@
 
 ${inputFile:path=index.pillar}$
-${inputFile:path=projects.pillar}$
 ${inputFile:path=installation.pillar}$
-${inputFile:path=publications.pillar}$
 ${inputFile:path=coordinates.pillar}$
