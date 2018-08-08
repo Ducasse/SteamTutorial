@@ -81,14 +81,14 @@
       <ul class="nav navbar-nav navbar-right">
 		
         <li class="nav-item">
-          <a href="/SteamTutorial/index.html#about me">
-            <span>About me</span>
+          <a href="/SteamTutorial/installation.html#installation">
+            <span>Installation</span>
           </a>
         </li>
 		
         <li class="nav-item">
-          <a href="/SteamTutorial/installation.html#installation">
-            <span>Installation</span>
+          <a href="/SteamTutorial/index.html#about me">
+            <span>About me</span>
           </a>
         </li>
 		
@@ -120,6 +120,47 @@
 
 	
 <p>
+<h1>Installation</h1>
+
+<p>
+First you need a Pharo 6.1 image, if you don't have it you can create a new one.
+Open Iceberg and clone Steam's github repository.
+</p>
+<p>
+url : https://github.com/guillep/steam.git
+</p>
+<p>
+repository : src
+</p>
+<p>
+<a id="iceberg"></a>
+<figure>
+	<img src="/figures/iceberg.png" width="50%" id="iceberg" alt="Load Steam's Github repository with Iceberg"/>
+	<figcaption>Load Steam's Github repository with Iceberg</figcaption>
+</figure>
+</p>
+<p>
+Now you have to install the baseline of steam.
+It will download all needed packages.
+<a id="monticello"></a>
+<figure>
+	<img src="/figures/monticello.png" width="50%" id="monticello" alt="Steam installation with Monticello"/>
+	<figcaption>Steam installation with Monticello</figcaption>
+</figure>
+</p>
+
+<p>
+If Icebarg gives you the choice between load existing or incoming version you can choose the first one if the version is greater (higher).
+It will take few minutes (usually aroud 4 or 5 min).
+</p>
+
+<p>
+After all is done, you can open a Playground and type execute this code:
+</p><figure><pre><code>STExampleApp startOn: 8181.</code></pre><figcaption></figcaption></figure>
+
+<p>
+this will create the web application on port 8181.
+</p>
 <h1>About me</h1>
 
 <p>
@@ -137,43 +178,6 @@ Amet aliquam id diam maecenas ultricies mi eget mauris. Cursus euismod quis vive
 <p>
 Cursus turpis massa tincidunt dui ut ornare lectus sit amet. Aenean et tortor at risus viverra adipiscing at. Nisl tincidunt eget nullam non nisi. Neque ornare aenean euismod elementum nisi quis eleifend. In nulla posuere sollicitudin aliquam ultrices sagittis. Aliquam id diam maecenas ultricies. Pulvinar elementum integer enim neque volutpat ac tincidunt vitae semper. Scelerisque purus semper eget duis at tellus at urna condimentum. Nisi vitae suscipit tellus mauris a diam maecenas sed enim. Elementum nibh tellus molestie nunc non blandit massa enim. Magna fringilla urna porttitor rhoncus dolor purus non enim praesent. Libero justo laoreet sit amet cursus sit amet dictum sit. Elit at imperdiet dui accumsan sit amet nulla facilisi morbi.
 
-</p>
-<h1>Installation</h1>
-
-<p>
-First you need a Pharo 6.1 image, if you don't have it you can create a new one.
-Open Iceberg and clone Steam's github repository.
-url : https://github.com/guillep/steam.git
-repository : src
-<a id="iceberg"></a>
-<figure>
-	<img src="file:figures/iceberg.png" width="50%" id="iceberg" alt="Load Steam's Github repository with Iceberg"/>
-	<figcaption>Load Steam's Github repository with Iceberg</figcaption>
-</figure>
-</p>
-<p>
-Now you have to install the baseline of steam.
-It will download all needed packages.
-<a id="monticello"></a>
-<figure>
-	<img src="file:figures/monticello.png" width="50%" id="monticello" alt="Steam installation with Monticello"/>
-	<figcaption>Steam installation with Monticello</figcaption>
-</figure>
-</p>
-
-<p>
-If Icebarg gives you the choice between load existing or incoming version you can choose the first one if the version is greater (higher).
-It will take few minutes (usually aroud 4 or 5 min).
-</p>
-
-<p>
-After all is done, you can open a Playground and type execute this code:
-```
-STExampleApp startOn: 8181.
-```
-</p>
-<p>
-this will create the web application on port 8181.
 </p>
 <h1>Coordinates</h1>
 
