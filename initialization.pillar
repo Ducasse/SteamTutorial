@@ -9,7 +9,7 @@
 ! Initialization
 
 !! # Steam application component
-First we need to create a subclass of ==STApplicationRootComponent==, you can name it "STManagerApp" for example.
+First we need to create a subclass of ==STApplicationRootComponent==, you can name it ==STManagerApp== for example.
 [[[lab­el=­STApplicationRootComponent class|­lan­gua­ge=­Sma­lltalk
 STApplicationRootComponent subclass: #STManagerApp
 	instanceVariableNames: ''
@@ -30,14 +30,13 @@ STManagerApp >> initialize
 	"Here you can define your application menu"
 	menuEntries := {}
 ]]]
-
-@@note For now menuEntries is empty but we will create some classes to fill it up soon enough.
+@@note For now ==menuEntries== is empty but we will create some classes to fill it up soon enough.
 
 We need a title for our application.
 
 [[[lab­el=­app title|­lan­gua­ge=­Sma­lltalk
 STManagerApp >> title
-	"title will be diplayed on all the web application pages"
+	"title will be diplayed on each web application page"
 
 	^ 'Manager'
 ]]]
@@ -51,7 +50,7 @@ STManagerApp class >> applicationName
 	^ 'Manager'
 ]]]
 
-We also need te override the ==storeToUse== method to select the store to use.
+We also need te override the ==storeToUse== method to select the store we want to use.
 
 [[[lab­el=­app applicationName|­lan­gua­ge=­Sma­lltalk
 STManagerApp >> storeToUse
@@ -78,15 +77,16 @@ Add accessors.
 [[[lab­el=­ accessors|­lan­gua­ge=­Sma­lltalk
 STCategory >> title
 	^ title
-
+]]]
+[[[
 STCategory >> title: aString
 	title := aString
 ]]]
 
-And now we need to add the description for Magritte.
+And we need to add the description for Magritte.
 
 [[[lab­el=­ descriptionTitle|­lan­gua­ge=­Sma­lltalk
-descriptionTitle
+STManagerApp >> descriptionTitle
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'title';
@@ -111,9 +111,9 @@ STManagerApp >> initialize
 ]]]
 
 
-After all is done, you can open a Playground then type and execute this code:
+After all is done, you can open a Playground then type and execute this code :
 [[[lab­el=­start|­lan­gua­ge=­Sma­lltalk
 STManagerApp startOn: 8181.
 ]]]
 
-@note this will create the web application on port 8181.
+@note This will create a ==ZnZincServerAdaptor== server on port 8181 and initialize the web application.
