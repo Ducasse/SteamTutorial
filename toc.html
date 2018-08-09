@@ -165,12 +165,13 @@ Ok that's it ! All you'll need is here, now you can go to the <a href="http://ww
 </p>
 <p>
 <a href="">Initialization</a>
-<a href="">Initialization</a>
+<a href="://initialization.pillar">Initialization</a>
 </p>
 <p class="note">For the following sections, we need to have a GitHub account. So check <a href="https://services.github.com/on-demand/intro-to-github/create-github-account">here</a> if you do not have a GitHub account.</p>
 <h1>Initialization</h1>
 
-
+<ol><li>!! Steam application component</li>
+</ol>
 <p>
 First we need to create a subclass of <code>STApplicationRootComponent</code>, you can name it &quot;STManagerApp&quot; for example.
 </p><figure><pre><code>STApplicationRootComponent subclass: #STManagerApp
@@ -216,6 +217,10 @@ We also need te override the <code>storeToUse</code> method to select the store 
 	^ STMemoryStore</code></pre><figcaption></figcaption></figure>
 
 <p class="note">For now we're using a memory store to begin with. This store is just a playbox, so every object which is stored will be lost if you start a new session.</p>
+
+<ol><li>!! Simple Object</li>
+</ol>
+
 <p>
 Now let's create a simple new STObject subclass. For example let's call it <code>STCategory</code>. With a inctance variable <code>title</code> which will be just a string representing the title.
 </p>
