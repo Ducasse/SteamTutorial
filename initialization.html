@@ -93,6 +93,12 @@
         </li>
 		
         <li class="nav-item">
+          <a href="/SteamTutorial/sso.html#single sign on">
+            <span>Single Sign On</span>
+          </a>
+        </li>
+		
+        <li class="nav-item">
           <a href="/SteamTutorial/index.html#about me">
             <span>About me</span>
           </a>
@@ -134,8 +140,8 @@
 
 	<h1>Initialization</h1>
 
-<h2># Steam application component</h2>
 <p>
+<code># Steam application component</code>
 First we need to create a subclass of <code>STApplicationRootComponent</code>, you can name it <code>STManagerApp</code> for example.
 </p><figure><pre><code>STApplicationRootComponent subclass: #STManagerApp
 	instanceVariableNames: ''
@@ -180,8 +186,9 @@ We also need te override the <code>storeToUse</code> method to select the store 
 
 <p class="note">For now we're using a memory store to begin with. This store is just a playbox, so every object which is stored will be lost if you start a new session.</p>
 
-<h2># Simple Object</h2>
-
+<p>
+<code># Simple Object</code>
+</p>
 <p>
 Now let's create a simple new STObject subclass. For example let's call it <code>STCategory</code>. With a inctance variable <code>title</code> which will be just a string representing the title.
 </p>

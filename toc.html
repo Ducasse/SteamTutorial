@@ -93,6 +93,12 @@
         </li>
 		
         <li class="nav-item">
+          <a href="/SteamTutorial/sso.html#single sign on">
+            <span>Single Sign On</span>
+          </a>
+        </li>
+		
+        <li class="nav-item">
           <a href="/SteamTutorial/index.html#about me">
             <span>About me</span>
           </a>
@@ -161,7 +167,7 @@ It will take few minutes (usually aroud 4 or 5 min).
 </p>
 
 <p>
-Ok that's it ! All you'll need is here, now you can go to the <a href="">Initialization</a> part.
+Ok that's it ! All you'll need is here, now you can go to the <a href=":https://pierretsap.github.io/SteamTutorial/initialization.html">Initialization</a> part.
 <a href="">Initialization</a>
 <a href="://initialization.pillar">Initialization</a>
 <a href="">Initialization</a>
@@ -169,8 +175,8 @@ Ok that's it ! All you'll need is here, now you can go to the <a href="">Initial
 </p>
 <h1>Initialization</h1>
 
-<h2># Steam application component</h2>
 <p>
+<code># Steam application component</code>
 First we need to create a subclass of <code>STApplicationRootComponent</code>, you can name it <code>STManagerApp</code> for example.
 </p><figure><pre><code>STApplicationRootComponent subclass: #STManagerApp
 	instanceVariableNames: ''
@@ -215,8 +221,9 @@ We also need te override the <code>storeToUse</code> method to select the store 
 
 <p class="note">For now we're using a memory store to begin with. This store is just a playbox, so every object which is stored will be lost if you start a new session.</p>
 
-<h2># Simple Object</h2>
-
+<p>
+<code># Simple Object</code>
+</p>
 <p>
 Now let's create a simple new STObject subclass. For example let's call it <code>STCategory</code>. With a inctance variable <code>title</code> which will be just a string representing the title.
 </p>
@@ -265,6 +272,17 @@ After all is done, you can open a Playground then type and execute this code :
 </p><figure><pre><code>STManagerApp startOn: 8181.</code></pre><figcaption></figcaption></figure>
 
 <a id="note This will create a ==ZnZincServerAdaptor== server on port 8181 and initialize the web application."></a>
+<h1>Single Sign On</h1>
+
+<p>
+Here we will see how to create an OAuth client ID, so you can access user's data through Google or Github.
+</p>
+<p>
+<code># Google</code>
+</p>
+<p>
+First you need to create ...
+</p>
 <h1>About me</h1>
 
 <p>
