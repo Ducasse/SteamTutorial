@@ -31,7 +31,7 @@ STManagerApp >> initialize
 	menuEntries := {}
 ]]]
 
-@note For now menuEntries is empty but we will create some classes to fill it up soon enough.
+@@note For now menuEntries is empty but we will create some classes to fill it up soon enough.
 
 We need a title for our application.
 
@@ -58,7 +58,7 @@ STManagerApp >> storeToUse
 	^ STMemoryStore
 ]]]
 
-@note For now we're using a memory store to begin with. This store is just a playbox, so every object which is stored will be lost if you start a new session.
+@@note For now we're using a memory store to begin with. This store is just a playbox, so every object which is stored will be lost if you start a new session.
 
 Now let's create a simple new STObject subclass. For example let's call it ==STCategory==. With a inctance variable ==title== which will be just a string representing the title.
 
