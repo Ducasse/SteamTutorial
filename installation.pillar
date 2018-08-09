@@ -26,9 +26,4 @@ If Icebarg gives you the choice between load existing or incoming version you ca
 It will take few minutes (usually aroud 4 or 5 min).
 
 
-Ok that's it ! All you'll need is here, now you can go to the *Initialization>http://www.google.fr* part.
-
-*Initialization>//initialization.pillar*
-*Initialization>://initialization.pillar*
-
-@@note For the following sections, we need to have a GitHub account. So check *here>https://services.github.com/on-demand/intro-to-github/create-github-account* if you do not have a GitHub account.
+Ok that's it ! All you'll need is here, now you can go to the *Initialization>:initialization.pillar* part.
