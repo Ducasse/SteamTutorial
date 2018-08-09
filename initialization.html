@@ -134,10 +134,9 @@
 
 	<h1>Initialization</h1>
 
-<ol><li>!! Steam application component</li>
-</ol>
+<h2># Steam application component</h2>
 <p>
-First we need to create a subclass of <code>STApplicationRootComponent</code>, you can name it &quot;STManagerApp&quot; for example.
+First we need to create a subclass of <code>STApplicationRootComponent</code>, you can name it <code>STManagerApp</code> for example.
 </p><figure><pre><code>STApplicationRootComponent subclass: #STManagerApp
 	instanceVariableNames: ''
 	classVariableNames: ''
@@ -156,13 +155,12 @@ We begin with the initialization :
 	
 	&quot;Here you can define your application menu&quot;
 	menuEntries := {}</code></pre><figcaption></figcaption></figure>
-
-<p class="note">For now menuEntries is empty but we will create some classes to fill it up soon enough.</p>
+<p class="note">For now <code>menuEntries</code> is empty but we will create some classes to fill it up soon enough.</p>
 <p>
 We need a title for our application.
 </p>
 <figure><pre><code>STManagerApp &gt;&gt; title
-	&quot;title will be diplayed on all the web application pages&quot;
+	&quot;title will be diplayed on each web application page&quot;
 
 	^ 'Manager'</code></pre><figcaption></figcaption></figure>
 
@@ -175,15 +173,14 @@ The applicationName is the url extention for your website.
 	^ 'Manager'</code></pre><figcaption></figcaption></figure>
 
 <p>
-We also need te override the <code>storeToUse</code> method to select the store to use.
+We also need te override the <code>storeToUse</code> method to select the store we want to use.
 </p>
 <figure><pre><code>STManagerApp &gt;&gt; storeToUse
 	^ STMemoryStore</code></pre><figcaption></figcaption></figure>
 
 <p class="note">For now we're using a memory store to begin with. This store is just a playbox, so every object which is stored will be lost if you start a new session.</p>
 
-<ol><li>!! Simple Object</li>
-</ol>
+<h2># Simple Object</h2>
 
 <p>
 Now let's create a simple new STObject subclass. For example let's call it <code>STCategory</code>. With a inctance variable <code>title</code> which will be just a string representing the title.
@@ -198,15 +195,14 @@ Now let's create a simple new STObject subclass. For example let's call it <code
 Add accessors.
 </p>
 <figure><pre><code>STCategory &gt;&gt; title
-	^ title
-
-STCategory &gt;&gt; title: aString
+	^ title</code></pre><figcaption></figcaption></figure>
+<figure><pre><code>STCategory &gt;&gt; title: aString
 	title := aString</code></pre><figcaption></figcaption></figure>
 
 <p>
-And now we need to add the description for Magritte.
+And we need to add the description for Magritte.
 </p>
-<figure><pre><code>descriptionTitle
+<figure><pre><code>STManagerApp &gt;&gt; descriptionTitle
 	&lt;magritteDescription&gt;
 	^ MAStringDescription new
 		label: 'title';
@@ -230,10 +226,10 @@ Now we can add our new class to the <code>menuEntries</code> in <code>STManager<
 
 
 <p>
-After all is done, you can open a Playground then type and execute this code:
+After all is done, you can open a Playground then type and execute this code :
 </p><figure><pre><code>STManagerApp startOn: 8181.</code></pre><figcaption></figcaption></figure>
 
-<a id="note this will create the web application on port 8181."></a>
+<a id="note This will create a ==ZnZincServerAdaptor== server on port 8181 and initialize the web application."></a>
 
   </div>
 </div>

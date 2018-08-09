@@ -8,7 +8,7 @@
 
 ! Installation
 
-First you need a Pharo 6.1 image, if you don't have it you can create a new one.
+First you need a Pharo 6.1 image, if you don't have it you can create a new one with *Pharo Launcher>https://pharo.org/download*.
 Open Iceberg and clone Steam's github repository.
 
 url : https://github.com/guillep/steam.git
@@ -19,7 +19,7 @@ repository : src
 
 Now you have to install the baseline of steam.
 It will download all needed packages.
-+Steam installation with Monticello>file://figures/monticello.png|width=100|label=monticello+
++Steam installation with Metacello>file://figures/metacello.png|width=100|label=metacello+
 
 
 If Icebarg gives you the choice between load existing or incoming version you can choose the first one if the version is greater (higher).
@@ -27,3 +27,7 @@ It will take few minutes (usually aroud 4 or 5 min).
 
 
 Ok that's it ! All you'll need is here, now you can go to the *Initialization>:initialization.pillar* part.
+*Initialization>:/initialization.pillar*
+*Initialization>://initialization.pillar*
+*Initialization>:./initialization.pillar*
+*Initialization>:.initialization.pillar*
