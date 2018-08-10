@@ -8,7 +8,7 @@
 
 ! Initialization
 
-""# Steam application component""
+# ""Steam application component""
 First we need to create a subclass of ==STApplicationRootComponent==, you can name it ==STManagerApp== for example.
 [[[lab­el=­STApplicationRootComponent class|­lan­gua­ge=­Sma­lltalk
 STApplicationRootComponent subclass: #STManagerApp
