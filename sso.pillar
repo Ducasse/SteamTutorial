@@ -10,6 +10,30 @@
 
 Here we will see how to create an OAuth client ID, so you can access user's data through Google or Github.
 
-==# Google==
+"" # Google""
 
-First you need to create ...
+First you need go to *Google APIs>https://console.developers.google.com/apis* and log in with your google account.
+Then in ""Credentials"" > ""Create credentials"" > ""OAuth client ID""
++Google OAuth client ID>file://figures/creation_google_oauth.png|width=100|label=google+
+
+Choose ""Web application"" and a name for your authentication application, you can use the same as for the steam app : "Manager". 
+
+@@note The name will be displayed when a user will try to connect to your steam application via Google.
+
+For the ""Authorised redirect URIs"" put ==http://localhost:8181/oauth2callback==.
+
+Now you need to copy and paste the ""client ID"" to key and ""client secret"" to secret in ==STManager== class side.
+
+[[[lab­el=­ sso|­lan­gua­ge=­Sma­lltalk
+STManager class >> oauthHandlers
+	^ {(STGoogleAuthHandler
+		key: '' "paste client ID here"
+		secret: '' "paste client secret here"
+		redirectUrl: 'http://localhost:' , self seasideServer port asString , '/oauth2callback')}
+]]]
+
+It should work now with google.
+
+
+# GitHub
+

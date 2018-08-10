@@ -8,7 +8,7 @@
 
 ! Initialization
 
-==# Steam application component==
+""# Steam application component""
 First we need to create a subclass of ==STApplicationRootComponent==, you can name it ==STManagerApp== for example.
 [[[lab­el=­STApplicationRootComponent class|­lan­gua­ge=­Sma­lltalk
 STApplicationRootComponent subclass: #STManagerApp
@@ -60,7 +60,7 @@ STManagerApp >> storeToUse
 @@note For now we're using a memory store to begin with. This store is just a playbox, so every object which is stored will be lost if you start a new session.
 
 
-==# Simple Object==
+# ""Simple Object""
 
 Now let's create a simple new STObject subclass. For example let's call it ==STCategory==. With a inctance variable ==title== which will be just a string representing the title.
 
