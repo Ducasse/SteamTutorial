@@ -163,13 +163,25 @@ Choose <strong>Web application</strong> and a name for your authentication appli
 For the <strong>Authorised redirect URIs</strong> put <code>http://localhost:8181/oauth2callback</code>.
 </p>
 <p>
-Now you need to copy and paste the <strong>client ID</strong> to key and <strong>client secret</strong> to secret in <code>STManager</code> class side.
+<a id="google"></a>
+<figure>
+	<img src="figures/finialization_google_oauth.png" width="100%" id="google" alt="Google OAuth finalization"/>
+	<figcaption>Google OAuth finalization</figcaption>
+</figure>
+</p>
+<p>
+After clicking on <strong>Create</strong> you will need to copy and paste the <strong>client ID</strong> to key and <strong>client secret</strong> to secret in <code>STManager</code> class side.
 </p>
 <figure><pre><code>STManager class &gt;&gt; oauthHandlers
 	^ {(STGoogleAuthHandler
 		key: '' &quot;paste client ID here&quot;
 		secret: '' &quot;paste client secret here&quot;
 		redirectUrl: 'http://localhost:' , self seasideServer port asString , '/oauth2callback')}</code></pre><figcaption></figcaption></figure>
+
+<p>
+And we also have to initialize our class so it can be taken into account.
+</p>
+<figure><pre><code>STManager initialize.</code></pre><figcaption></figcaption></figure>
 
 <p>
 You should be able to authentify yourself with google.
@@ -180,9 +192,42 @@ You should be able to authentify yourself with google.
 
 <p>
 It's basically the same for Github, you need go to <a href="https://github.com/settings/developers">Developer settings</a> and log in if it's not already done.
+</p>
+<p>
 Then in <strong>OAuth Apps</strong> &gt; <strong>Register a new application</strong> or <strong>New OAuth App</strong> if you already have some.
 </p>
+<p>
+For the <strong>Application name</strong> you can put &quot;Manager&quot;, for <strong>Homepage URL</strong> put &quot;http://localhost:8181/Manager&quot; and <strong>Authorization callback URL</strong> put &quot;http://localhost:8181/oauth2callback&quot;
+</p>
+<p>
+<a id="github"></a>
+<figure>
+	<img src="figures/finialization_github_oauth.png" width="100%" id="github" alt="Github OAuth finalization"/>
+	<figcaption>Github OAuth finalization</figcaption>
+</figure>
+</p>
+<p>
+After clicking on <strong>Register application</strong> you will need to copy and paste the <strong>client ID</strong> to key and <strong>client secret</strong> to secret in <code>STManager</code> class side.
+</p>
+<figure><pre><code>STManager class &gt;&gt; oauthHandlers
+	^ {(STGoogleAuthHandler
+		key: '' &quot;google client ID&quot;
+		secret: '' &quot;google client secret&quot;
+		redirectUrl: 'http://localhost:' , self seasideServer port asString , '/oauth2callback').
+	(STGithubAuthHandler
+		key: '' &quot;paste client ID here&quot;
+		secret: '' &quot;paste client secret here&quot;
+		redirectUrl: 'http://localhost:' , self seasideServer port asString , '/oauth2callback')}</code></pre><figcaption></figcaption></figure>
 
+<p>
+Again don't forget to initialize our class so it can be taken into account.
+</p>
+<figure><pre><code>STManager initialize.</code></pre><figcaption></figcaption></figure>
+
+<p>
+Google and GitHub should work now.
+
+</p>
 
   </div>
 </div>
