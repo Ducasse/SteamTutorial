@@ -22,14 +22,22 @@ Choose ""Web application"" and a name for your authentication application, you c
 
 For the ""Authorised redirect URIs"" put ==http://localhost:8181/oauth2callback==.
 
-Now you need to copy and paste the ""client ID"" to key and ""client secret"" to secret in ==STManager== class side.
++Google OAuth finalization>file://figures/finialization_google_oauth.png|width=100|label=google+
 
-[[[lab­el=­ sso|­lan­gua­ge=­Sma­lltalk
+After clicking on ""Create"" you will need to copy and paste the ""client ID"" to key and ""client secret"" to secret in ==STManager== class side.
+
+[[[lab­el=­sso|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
 STManager class >> oauthHandlers
 	^ {(STGoogleAuthHandler
 		key: '' "paste client ID here"
 		secret: '' "paste client secret here"
 		redirectUrl: 'http://localhost:' , self seasideServer port asString , '/oauth2callback')}
+]]]
+
+And we also have to initialize our class so it can be taken into account.
+
+[[[lab­el=­init|­lan­gua­ge=­Sma­lltalk
+STManager initialize.
 ]]]
 
 You should be able to authentify yourself with google.
@@ -38,5 +46,31 @@ You should be able to authentify yourself with google.
 # ""GitHub""
 
 It's basically the same for Github, you need go to *Developer settings>https://github.com/settings/developers* and log in if it's not already done.
+
 Then in ""OAuth Apps"" > ""Register a new application"" or ""New OAuth App"" if you already have some.
 
+For the ""Application name"" you can put "Manager", for ""Homepage URL"" put "http://localhost:8181/Manager" and ""Authorization callback URL"" put "http://localhost:8181/oauth2callback"
+
++Github OAuth finalization>file://figures/finialization_github_oauth.png|width=100|label=github+
+
+After clicking on ""Register application"" you will need to copy and paste the ""client ID"" to key and ""client secret"" to secret in ==STManager== class side.
+
+[[[lab­el=­sso|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+STManager class >> oauthHandlers
+	^ {(STGoogleAuthHandler
+		key: '' "google client ID"
+		secret: '' "google client secret"
+		redirectUrl: 'http://localhost:' , self seasideServer port asString , '/oauth2callback').
+	(STGithubAuthHandler
+		key: '' "paste client ID here"
+		secret: '' "paste client secret here"
+		redirectUrl: 'http://localhost:' , self seasideServer port asString , '/oauth2callback')}
+]]]
+
+Again don't forget to initialize our class so it can be taken into account.
+
+[[[lab­el=­init|­lan­gua­ge=­Sma­lltalk
+STManager initialize.
+]]]
+
+Google and GitHub should work now.
