@@ -10,7 +10,7 @@
 
 Here we will see how to create an OAuth client ID, so you can access user's data through Google or Github.
 
-#Google
+!! Google
 
 First you need go to *Google APIs>https://console.developers.google.com/apis* and log in with your google account.
 Then in ""Credentials"" > ""Create credentials"" > ""OAuth client ID""
@@ -43,7 +43,7 @@ STManager initialize.
 You should be able to authentify yourself with google.
 
 
-#GitHub
+!! GitHub
 
 It's basically the same for Github, you need go to *Developer settings>https://github.com/settings/developers* and log in if it's not already done.
 
