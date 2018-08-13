@@ -144,44 +144,55 @@
   </div>
   <div class="col-xs-12 col-md-8">
 
-	<h1>Installation</h1>
+	<h1>Configure Store</h1>
 
 <p>
-First you need a Pharo 6.1 image, if you don't have it you can create a new one with <a href="https://pharo.org/download">Pharo Launcher</a>.
-Open Iceberg and clone Steam's github repository.
+In this section we will learn how to use <strong>MongoDB</strong> (a document-oriented database) and <strong>PostgreSQL</strong> (a object-relational database system).
 </p>
-<p>
-url : https://github.com/guillep/steam.git
-</p>
-<p>
-repository : src
-</p>
-<p>
-<a id="iceberg"></a>
-<figure>
-	<img src="figures/iceberg.png" id="iceberg" alt="Load Steam's Github repository with Iceberg"/>
-	<figcaption>Load Steam's Github repository with Iceberg</figcaption>
-</figure>
-</p>
-<p>
-Now you have to install the baseline of steam.
-It will download all needed packages.
-<a id="metacello"></a>
-<figure>
-	<img src="figures/metacello.png" width="100%" id="metacello" alt="Steam installation with Metacello"/>
-	<figcaption>Steam installation with Metacello</figcaption>
-</figure>
-</p>
+<ol><li><strong>Mongo</strong></li>
+</ol>
 
 <p>
-If Icebarg gives you the choice between load existing or incoming version you can choose the first one if the version is greater (higher).
-It will take few minutes (usually aroud 4 or 5 min).
+To begin with you have to install it on your computer first. You can find a documentation <a href="https://docs.mongodb.com/manual/administration/install-community/">here</a>.
 </p>
+<p>
+Then to run it, open a terminal and execute <code>mongod</code> you may need to put sudo before <code>sudo mongod</code>.
+</p>
+
+<ol><li><strong>PostgreSQL</strong></li>
+</ol>
 
 <p>
-Ok that's it ! All you'll need is here, now you can go to the <strong><a href=":https://pierretsap.github.io/SteamTutorial/initialization.html#initialization">Initialization</a></strong> part.
-
+For PgSql you can find a documentation <a href="https://www.postgresql.org/download/">here</a>.
 </p>
+<ol><li><strong>Choose the store</strong></li>
+</ol>
+
+<p>
+This is very easy, you just have to change the method <code>STManager &gt;&gt; storeToUse</code> to return the store you want to use : <code>STMongoStore</code> or <code>STPostgresSQLStore</code>.
+</p>
+<ol><li><strong>Configure STPostgresSQLStore</strong></li>
+</ol>
+
+<p>
+To configure the STPostgresSQLStore you have to change the <code>STPostgresSQLStore class &gt;&gt; login</code> method.
+</p><figure><pre><code>login
+	^ Login new
+		database: PostgreSQLPlatform new;
+		&quot;here use the username you picked when installed PgSQL&quot;
+		username: 'pierretsapliayeu';
+		&quot;the password is optionnal but you can use one&quot;
+		password: 'secret';
+		&quot;connect string looks like hostname:portNumber_db-name.
+		:portNumber is optional&quot;
+		connectString: 'localhost:5432_pierretsapliayeu';
+		encodingStrategy: #utf8.</code></pre><figcaption></figcaption></figure>
+
+<p>
+After the installation and configuration of the store you have to create tables by executing <code>STManager new createTables</code>
+</p>
+<p class="note">If you want to drop tables you can run <code>STManager new dropTables</code>.</p>
+
 
   </div>
 </div>

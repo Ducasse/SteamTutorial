@@ -99,6 +99,12 @@
         </li>
 		
         <li class="nav-item">
+          <a href="/SteamTutorial/stores.html#configure store">
+            <span>Configure Store</span>
+          </a>
+        </li>
+		
+        <li class="nav-item">
           <a href="/SteamTutorial/index.html#about me">
             <span>About me</span>
           </a>
@@ -167,11 +173,8 @@ It will take few minutes (usually aroud 4 or 5 min).
 </p>
 
 <p>
-Ok that's it ! All you'll need is here, now you can go to the <a href=":https://pierretsap.github.io/SteamTutorial/initialization.html">Initialization</a> part.
-<a href="">Initialization</a>
-<a href="://initialization.pillar">Initialization</a>
-<a href="">Initialization</a>
-<a href="">Initialization</a>
+Ok that's it ! All you'll need is here, now you can go to the <strong><a href=":https://pierretsap.github.io/SteamTutorial/initialization.html#initialization">Initialization</a></strong> part.
+
 </p>
 <h1>Initialization</h1>
 
@@ -363,6 +366,55 @@ Again don't forget to initialize our class so it can be taken into account.
 Google and GitHub should work now.
 
 </p>
+<h1>Configure Store</h1>
+
+<p>
+In this section we will learn how to use <strong>MongoDB</strong> (a document-oriented database) and <strong>PostgreSQL</strong> (a object-relational database system).
+</p>
+<ol><li><strong>Mongo</strong></li>
+</ol>
+
+<p>
+To begin with you have to install it on your computer first. You can find a documentation <a href="https://docs.mongodb.com/manual/administration/install-community/">here</a>.
+</p>
+<p>
+Then to run it, open a terminal and execute <code>mongod</code> you may need to put sudo before <code>sudo mongod</code>.
+</p>
+
+<ol><li><strong>PostgreSQL</strong></li>
+</ol>
+
+<p>
+For PgSql you can find a documentation <a href="https://www.postgresql.org/download/">here</a>.
+</p>
+<ol><li><strong>Choose the store</strong></li>
+</ol>
+
+<p>
+This is very easy, you just have to change the method <code>STManager &gt;&gt; storeToUse</code> to return the store you want to use : <code>STMongoStore</code> or <code>STPostgresSQLStore</code>.
+</p>
+<ol><li><strong>Configure STPostgresSQLStore</strong></li>
+</ol>
+
+<p>
+To configure the STPostgresSQLStore you have to change the <code>STPostgresSQLStore class &gt;&gt; login</code> method.
+</p><figure><pre><code>login
+	^ Login new
+		database: PostgreSQLPlatform new;
+		&quot;here use the username you picked when installed PgSQL&quot;
+		username: 'pierretsapliayeu';
+		&quot;the password is optionnal but you can use one&quot;
+		password: 'secret';
+		&quot;connect string looks like hostname:portNumber_db-name.
+		:portNumber is optional&quot;
+		connectString: 'localhost:5432_pierretsapliayeu';
+		encodingStrategy: #utf8.</code></pre><figcaption></figcaption></figure>
+
+<p>
+After the installation and configuration of the store you have to create tables by executing <code>STManager new createTables</code>
+</p>
+<p class="note">If you want to drop tables you can run <code>STManager new dropTables</code>.</p>
+
 <h1>About me</h1>
 
 <p>
