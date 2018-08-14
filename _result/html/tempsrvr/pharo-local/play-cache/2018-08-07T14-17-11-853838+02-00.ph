@@ -1,0 +1,1 @@
+ZnServer startDefaultOn: 1702.ZnServer default delegate: ((ZnStaticFileServerDelegate new) 									directory: '/Users/pierretsapliayeu/SteamTutoral/_result/html' asFileReference; 									yourself).

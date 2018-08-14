@@ -1,0 +1,143 @@
+{ "profile" : [
+	{ "name"	: "Steam",
+		"avatar": "avatar.png",
+		"firm"	: "Initialization" }
+	]
+}
+
+
+! Launching
+
+First you need a Pharo 6.1 image, if you don't have it you can create a new one with *Pharo Launcher>https://pharo.org/download*.
+
+!! Installation
+
+Open Iceberg and clone Steam's github repository.
+
+url : https://github.com/guillep/steam.git
+
+repository : src
+
++Load Steam's Github repository with Iceberg>file://figures/iceberg.png|label=iceberg+
+
+Now you have to install the baseline of steam.
+It will download all needed packages.
++Steam installation with Metacello>file://figures/metacello.png|width=100|label=metacello+
+
+
+@@note If Icebarg gives you the choice between load existing or incoming version you can choose the first one if the version is greater (higher).
+It will take few minutes (usually aroud 4 or 5 min).
+
+
+Ok that's it ! All you'll need is here, now you can continue with the initialization.
+
+!! Steam application component
+
+First we need to create a subclass of ==STApplicationRootComponent==, you can name it ==STManagerApp== for example.
+[[[lab­el=­STApplicationRootComponent class|­lan­gua­ge=­Sma­lltalk|classDefinition=true
+STApplicationRootComponent subclass: #STManagerApp
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Steam-Example'
+]]]
+
+To make it work we need to override some superclass methods.
+
+We begin with the initialization :
+[[[lab­el=­initialize|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+STManagerApp >> initialize
+	super initialize.
+	
+	"Here you can choose your login object"
+	login := STExampleLogin on: self.
+	
+	"Here you can define your application menu"
+	menuEntries := {}
+]]]
+@@note For now ==menuEntries== is empty but we will create some classes to fill it up soon enough.
+
+We need a title for our application.
+
+[[[lab­el=­app title|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+STManagerApp >> title
+	"title will be diplayed on each web application page"
+
+	^ 'Manager'
+]]]
+
+The applicationName is the url extention for your website.
+
+[[[lab­el=­app applicationName|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+STManagerApp class >> applicationName
+	"applicationName will be diplayed on the web application url"
+
+	^ 'Manager'
+]]]
+
+We also need te override the ==storeToUse== method to select the store we want to use.
+
+[[[lab­el=­app applicationName|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+STManagerApp >> storeToUse
+	^ STMemoryStore
+]]]
+
+@@note For now we're using a memory store to begin with. This store is just a playbox, so every object which is stored will be lost if you start a new session.
+
+
+!! Simple Object
+
+Now let's create a simple new STObject subclass. For example let's call it ==STCategory==. With a inctance variable ==title== which will be just a string representing the title.
+
+[[[lab­el=­|­lan­gua­ge=­Sma­lltalk|classDefinition=true
+STObject subclass: #STCategory
+	instanceVariableNames: 'title'
+	classVariableNames: ''
+	package: 'Steam-Example'
+]]]
+
+
+Add accessors.
+
+[[[lab­el=­ accessors|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+STCategory >> title
+	^ title
+]]]
+[[[lab­el=­ accessors|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+STCategory >> title: aString
+	title := aString
+]]]
+
+And we need to add the description for Magritte.
+
+[[[lab­el=­ descriptionTitle|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+STManagerApp >> descriptionTitle
+	<magritteDescription>
+	^ MAStringDescription new
+		label: 'title';
+		accessor: #title;
+		priority: 100;
+		yourself
+]]]
+
+Now we can add our new class to the ==menuEntries== in ==STManager==.
+
+[[[lab­el=­initialize|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+STManagerApp >> initialize
+	super initialize.
+	
+	"Here you can choose your login object"
+	login := STExampleLogin on: self.
+	
+	"Here you can define your application menu"
+	menuEntries := {
+		STListAction on: STGameCategory title: 'Categories'
+	}
+]]]
+
+
+After all is done, you can open a Playground then type and execute this code :
+[[[lab­el=­start|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+STManagerApp startOn: 8181.
+]]]
+
+@note This will create a ==ZnZincServerAdaptor== server on port 8181 and initialize the web application.
