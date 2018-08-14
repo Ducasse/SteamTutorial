@@ -148,13 +148,13 @@ video {
   /* Extend Bootstrap declaration with centering. */
   margin: 0 auto;
 }
-/*
+
 figcaption:before {
   font-weight: 700;
   text-transform: uppercase;
-  content: "Figure " counter(captions) ": ";
+/*  content: "Figure " counter(captions) ": ";*/
 }
-*/
+
 figcaption {
   display: block;
   margin-top: 0.75em;

@@ -55,7 +55,7 @@
 
 
 	<div class="article-header">
-	<span class="article-header-caption">Personal's Stuff</span>
+	<span class="article-header-caption">Steam Tutorial</span>
 </div>
 
 	<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
@@ -71,7 +71,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="/">
-        Personal's Stuff
+        Steam Tutorial
       </a>
     </div>
 
@@ -81,14 +81,14 @@
       <ul class="nav navbar-nav navbar-right">
 		
         <li class="nav-item">
-          <a href="/SteamTutorial/installation.html#installation">
-            <span>Installation</span>
+          <a href="/SteamTutorial/index.html#introduction">
+            <span>Introduction</span>
           </a>
         </li>
 		
         <li class="nav-item">
-          <a href="/SteamTutorial/initialization.html#initialization">
-            <span>Initialization</span>
+          <a href="/SteamTutorial/launching.html#launching">
+            <span>Launching</span>
           </a>
         </li>
 		
@@ -101,12 +101,6 @@
         <li class="nav-item">
           <a href="/SteamTutorial/stores.html#configure store">
             <span>Configure Store</span>
-          </a>
-        </li>
-		
-        <li class="nav-item">
-          <a href="/SteamTutorial/index.html#about me">
-            <span>About me</span>
           </a>
         </li>
 		
@@ -137,17 +131,21 @@
 		<div class="portrait" style="background-image: url('avatar.png');"></div>
 	
 		<h1>Steam</h1>
-		<h3>Research Engineer</h3>
-		<p class="center-text">Space Laboratory</p>
+		<h3></h3>
+		<p class="center-text">Launching</p>
 	</div>
 	
   </div>
   <div class="col-xs-12 col-md-8">
 
-	<h1>Installation</h1>
+	<h1>Launching</h1>
 
 <p>
 First you need a Pharo 6.1 image, if you don't have it you can create a new one with <a href="https://pharo.org/download">Pharo Launcher</a>.
+</p>
+<h2>Installation</h2>
+
+<p>
 Open Iceberg and clone Steam's github repository.
 </p>
 <p>
@@ -173,15 +171,110 @@ It will download all needed packages.
 </figure>
 </p>
 
-<p>
-If Icebarg gives you the choice between load existing or incoming version you can choose the first one if the version is greater (higher).
+<p class="note">If Icebarg gives you the choice between load existing or incoming version you can choose the first one if the version is greater (higher).</p><p>
 It will take few minutes (usually aroud 4 or 5 min).
 </p>
 
 <p>
-Ok that's it ! All you'll need is here, now you can go to the <strong><a href=":https://pierretsap.github.io/SteamTutorial/initialization.html#initialization">Initialization</a></strong> part.
-
+Ok that's it ! All you'll need is here, now you can continue with the initialization.
 </p>
+<h2>Steam application component</h2>
+
+<p>
+First we need to create a subclass of <code>STApplicationRootComponent</code>, you can name it <code>STManagerApp</code> for example.
+</p><figure><pre><code>STApplicationRootComponent subclass: #STManagerApp
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Steam-Example'</code></pre><figcaption></figcaption></figure>
+
+<p>
+To make it work we need to override some superclass methods.
+</p>
+<p>
+We begin with the initialization :
+</p><figure><pre><code>STManagerApp &gt;&gt; initialize
+	super initialize.
+	
+	&quot;Here you can choose your login object&quot;
+	login := STExampleLogin on: self.
+	
+	&quot;Here you can define your application menu&quot;
+	menuEntries := {}</code></pre><figcaption></figcaption></figure>
+<p class="note">For now <code>menuEntries</code> is empty but we will create some classes to fill it up soon enough.</p>
+<p>
+We need a title for our application.
+</p>
+<figure><pre><code>STManagerApp &gt;&gt; title
+	&quot;title will be diplayed on each web application page&quot;
+
+	^ 'Manager'</code></pre><figcaption></figcaption></figure>
+
+<p>
+The applicationName is the url extention for your website.
+</p>
+<figure><pre><code>STManagerApp class &gt;&gt; applicationName
+	&quot;applicationName will be diplayed on the web application url&quot;
+
+	^ 'Manager'</code></pre><figcaption></figcaption></figure>
+
+<p>
+We also need te override the <code>storeToUse</code> method to select the store we want to use.
+</p>
+<figure><pre><code>STManagerApp &gt;&gt; storeToUse
+	^ STMemoryStore</code></pre><figcaption></figcaption></figure>
+
+<p class="note">For now we're using a memory store to begin with. This store is just a playbox, so every object which is stored will be lost if you start a new session.</p>
+
+<h2>Simple Object</h2>
+
+<p>
+Now let's create a simple new STObject subclass. For example let's call it <code>STCategory</code>. With a inctance variable <code>title</code> which will be just a string representing the title.
+</p>
+<figure><pre><code>STObject subclass: #STCategory
+	instanceVariableNames: 'title'
+	classVariableNames: ''
+	package: 'Steam-Example'</code></pre><figcaption></figcaption></figure>
+
+
+<p>
+Add accessors.
+</p>
+<figure><pre><code>STCategory &gt;&gt; title
+	^ title</code></pre><figcaption></figcaption></figure>
+<figure><pre><code>STCategory &gt;&gt; title: aString
+	title := aString</code></pre><figcaption></figcaption></figure>
+
+<p>
+And we need to add the description for Magritte.
+</p>
+<figure><pre><code>STManagerApp &gt;&gt; descriptionTitle
+	&lt;magritteDescription&gt;
+	^ MAStringDescription new
+		label: 'title';
+		accessor: #title;
+		priority: 100;
+		yourself</code></pre><figcaption></figcaption></figure>
+
+<p>
+Now we can add our new class to the <code>menuEntries</code> in <code>STManager</code>.
+</p>
+<figure><pre><code>STManagerApp &gt;&gt; initialize
+	super initialize.
+	
+	&quot;Here you can choose your login object&quot;
+	login := STExampleLogin on: self.
+	
+	&quot;Here you can define your application menu&quot;
+	menuEntries := {
+		STListAction on: STGameCategory title: 'Categories'
+	}</code></pre><figcaption></figcaption></figure>
+
+
+<p>
+After all is done, you can open a Playground then type and execute this code :
+</p><figure><pre><code>STManagerApp startOn: 8181.</code></pre><figcaption></figcaption></figure>
+
+<a id="note This will create a ==ZnZincServerAdaptor== server on port 8181 and initialize the web application."></a>
 
   </div>
 </div>

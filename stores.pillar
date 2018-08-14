@@ -1,8 +1,7 @@
 { "profile" : [
 	{ "name"	: "Steam",
 		"avatar": "avatar.png",
-		"post"	: "Research Engineer",
-		"firm"	: "Space Laboratory" }
+		"firm"	: "Configure Store" }
 	]
 }
 
