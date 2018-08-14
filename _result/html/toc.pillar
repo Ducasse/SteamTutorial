@@ -1,6 +1,0 @@
-
-${inputFile:path=index.pillar}$
-${inputFile:path=launching.pillar}$
-${inputFile:path=sso.pillar}$
-${inputFile:path=stores.pillar}$
-${inputFile:path=coordinates.pillar}$
