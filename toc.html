@@ -519,9 +519,9 @@ For the <strong>Authorised redirect URIs</strong> put <code>http://localhost:818
 </figure>
 </p>
 <p>
-After clicking on <strong>Create</strong> you will need to copy and paste the <strong>client ID</strong> to key and <strong>client secret</strong> to secret in <code>STManager</code> class side.
+After clicking on <strong>Create</strong> you will need to copy and paste the <strong>client ID</strong> to key and <strong>client secret</strong> to secret in <code>GameManager</code> class side.
 </p>
-<figure><pre><code>STManager class &gt;&gt; oauthHandlers
+<figure><pre><code>GameManager class &gt;&gt; oauthHandlers
 	^ {(STGoogleAuthHandler
 		key: '' &quot;paste client ID here&quot;
 		secret: '' &quot;paste client secret here&quot;
@@ -530,7 +530,7 @@ After clicking on <strong>Create</strong> you will need to copy and paste the <s
 <p>
 And we also have to initialize our class so it can be taken into account.
 </p>
-<figure><pre><code>STManager initialize.</code></pre><figcaption></figcaption></figure>
+<figure><pre><code>GameManager initialize.</code></pre><figcaption></figcaption></figure>
 
 <p>
 You should be able to authentify yourself with google.
@@ -555,9 +555,9 @@ For the <strong>Application name</strong> you can put &quot;Manager&quot;, for <
 </figure>
 </p>
 <p>
-After clicking on <strong>Register application</strong> you will need to copy and paste the <strong>client ID</strong> to key and <strong>client secret</strong> to secret in <code>STManager</code> class side.
+After clicking on <strong>Register application</strong> you will need to copy and paste the <strong>client ID</strong> to key and <strong>client secret</strong> to secret in <code>GameManager</code> class side.
 </p>
-<figure><pre><code>STManager class &gt;&gt; oauthHandlers
+<figure><pre><code>GameManager class &gt;&gt; oauthHandlers
 	^ {(STGoogleAuthHandler
 		key: '' &quot;google client ID&quot;
 		secret: '' &quot;google client secret&quot;
@@ -570,7 +570,7 @@ After clicking on <strong>Register application</strong> you will need to copy an
 <p>
 Again don't forget to initialize our class so it can be taken into account.
 </p>
-<figure><pre><code>STManager initialize.</code></pre><figcaption></figcaption></figure>
+<figure><pre><code>GameManager initialize.</code></pre><figcaption></figcaption></figure>
 
 <p>
 Google and GitHub should work now.
