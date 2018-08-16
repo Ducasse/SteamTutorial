@@ -135,7 +135,14 @@
 <h1>Introduction</h1>
 
 <p>
-Steam is a framework that uses meta-description to create quickly web applications in Seaside and generate automatically other concerns like persistence. Steam uses Seaside, an open source framework of choice for developing sophisticated and dynamic web applications. Seaside uses the power of objects to master the web. Seaside is based on Smalltalk (like Pharo).
+<a id="steamdiagram"></a>
+<figure>
+	<img src="/figures/final_preview.png" width="100%" id="steamdiagram" alt="Steam's preview"/>
+	<figcaption>Steam's preview</figcaption>
+</figure>
+</p>
+<p>
+Steam is a framework that uses meta-description to create quickly web applications in Seaside and generate automatically other concerns like persistence. Steam uses Seaside, an open source framework of choice for developing sophisticated and dynamic web applications. Seaside uses the power of objects to master the web. Seaside is based on Smalltalk (like <a href="http://pharo.org/web">Pharo</a>).
 </p>
 <p>
 <a id="steamdiagram"></a>
@@ -144,12 +151,12 @@ Steam is a framework that uses meta-description to create quickly web applicatio
 	<figcaption>Steam's conceptual diagram</figcaption>
 </figure>
 </p>
-<p class="note">Pharo is a pure object-oriented programming language and a powerful environment, focused on simplicity and immediate feedback (think Integrated Development Environment (IDE) and Operating System (OS) rolled into one).</p>
+<p class="note"><a href="http://pharo.org/web">Pharo</a> is a pure object-oriented programming language and a powerful environment, focused on simplicity and immediate feedback (think Integrated Development Environment (IDE) and Operating System (OS) rolled into one).</p>
 <p>
-In this tutorial we will see how we create a website and display/manage basic objects thanks to Steam framework.
+In this tutorial we will see how we create a website and display/manage basic, then more complex objects thanks to Steam framework.
 </p>
 <p>
-To make it work we will need to extend some classes as <code>STApplicationRootComponent</code> to create the main component that defines your application and <code>STObject</code> which will be your objects you want to manage.
+To make use the framework we will need to extend some classes as <code>STApplicationRootComponent</code> to create the main component that defines your application and <code>STObject</code> which will be the objects you want to manage.
 </p>
 <p>
 For instance we will create two classes <code>GMCategory</code> and <code>GMGame</code> and add some methodes like this.
@@ -157,13 +164,11 @@ For instance we will create two classes <code>GMCategory</code> and <code>GMGame
 <p>
 <a id="stobjects"></a>
 <figure>
-	<img src="/figures/stobject_subclasses_uml.png" id="stobjects" alt="STObjects subclasses"/>
+	<img src="/figures/stobject_subclasses_uml.png" width="35%" id="stobjects" alt="STObjects subclasses"/>
 	<figcaption>STObjects subclasses</figcaption>
 </figure>
+
 </p>
-
-
-
 <h1>Launching</h1>
 
 <p>
@@ -172,14 +177,11 @@ First you need a Pharo 6.1 image, if you don't have it you can create a new one 
 <h2>Installation</h2>
 
 <p>
-Open Iceberg and clone Steam's github repository.
+In the Pharo image open Iceberg and clone Steam's github repository.
 </p>
-<p>
-url : https://github.com/guillep/steam.git
-</p>
-<p>
-repository : src
-</p>
+<figure><pre><code>url : https://github.com/guillep/steam.git
+repository : src</code></pre><figcaption></figcaption></figure>
+
 <p>
 <a id="iceberg"></a>
 <figure>
@@ -189,7 +191,7 @@ repository : src
 </p>
 <p>
 Now you have to install the baseline of steam.
-It will download all needed packages.
+It will download all the needed packages.
 <a id="metacello"></a>
 <figure>
 	<img src="/figures/metacello.png" width="100%" id="metacello" alt="Steam installation with Metacello"/>
@@ -197,32 +199,30 @@ It will download all needed packages.
 </figure>
 </p>
 
-<p class="note">If Icebarg gives you the choice between load existing or incoming version you can choose the first one if the version is greater (higher).</p><p>
-It will take few minutes (usually aroud 4 or 5 min).
-</p>
+<p class="note">If Iceberg gives you the choice between load existing or incoming version you can choose the first one if the version is greater (higher). It will take a few minutes (usually aroud 4 or 5 minutes).</p>
 
 <p>
-Ok that's it ! All you'll need is here, now you can continue with the initialization.
+Ok, this is it ! All you will need is here, now you can continue with the initialization.
 </p>
 <h2>Steam application component</h2>
 
 <p>
-First we need to create a subclass of <code>STApplicationRootComponent</code>, you can name it <code>STManagerApp</code> for example.
-</p><figure><pre><code>STApplicationRootComponent subclass: #STManagerApp
+First we need to create a subclass of <code>STApplicationRootComponent</code>, you can name it <code>GameManager</code> for example.
+</p><figure><pre><code>STApplicationRootComponent subclass: #GameManager
 	instanceVariableNames: ''
 	classVariableNames: ''
-	package: 'Steam-Example'</code></pre><figcaption></figcaption></figure>
+	package: 'Steam-Game-Manager'</code></pre><figcaption></figcaption></figure>
 
 <p>
 To make it work we need to override some superclass methods.
 </p>
 <p>
 We begin with the initialization :
-</p><figure><pre><code>STManagerApp &gt;&gt; initialize
+</p><figure><pre><code>GameManager &gt;&gt; initialize
 	super initialize.
 	
 	&quot;Here you can choose your login object&quot;
-	login := STExampleLogin on: self.
+	login := STBasicLogin on: self.
 	
 	&quot;Here you can define your application menu&quot;
 	menuEntries := {}</code></pre><figcaption></figcaption></figure>
@@ -230,23 +230,23 @@ We begin with the initialization :
 <p>
 We need a title for our application.
 </p>
-<figure><pre><code>STManagerApp &gt;&gt; title
+<figure><pre><code>GameManager &gt;&gt; title
 	&quot;title will be diplayed on each web application page&quot;
 
-	^ 'Manager'</code></pre><figcaption></figcaption></figure>
+	^ 'Game Manager'</code></pre><figcaption></figcaption></figure>
 
 <p>
-The applicationName is the url extention for your website.
+In the class side. The <code>applicationName</code> is the url extention for your website.
 </p>
-<figure><pre><code>STManagerApp class &gt;&gt; applicationName
+<figure><pre><code>GameManager class &gt;&gt; applicationName
 	&quot;applicationName will be diplayed on the web application url&quot;
 
-	^ 'Manager'</code></pre><figcaption></figcaption></figure>
+	^ 'Game Manager'</code></pre><figcaption></figcaption></figure>
 
 <p>
 We also need te override the <code>storeToUse</code> method to select the store we want to use.
 </p>
-<figure><pre><code>STManagerApp &gt;&gt; storeToUse
+<figure><pre><code>GameManager &gt;&gt; storeToUse
 	^ STMemoryStore</code></pre><figcaption></figcaption></figure>
 
 <p class="note">For now we're using a memory store to begin with. This store is just a playbox, so every object which is stored will be lost if you start a new session.</p>
@@ -254,37 +254,45 @@ We also need te override the <code>storeToUse</code> method to select the store 
 <h2>Simple Object</h2>
 
 <p>
-Now let's create a simple new STObject subclass. For example let's call it <code>STCategory</code>. With a inctance variable <code>title</code> which will be just a string representing the title.
+Now let's create a simple new STObject subclass. For example let's call it <code>GMCategory</code>. With a inctance variable <code>title</code> which will be just a string representing the title.
 </p>
-<figure><pre><code>STObject subclass: #STCategory
+<figure><pre><code>STObject subclass: #GMCategory
 	instanceVariableNames: 'title'
 	classVariableNames: ''
-	package: 'Steam-Example'</code></pre><figcaption></figcaption></figure>
+	package: 'Steam-Game-Manager'</code></pre><figcaption></figcaption></figure>
 
 
 <p>
 Add accessors.
 </p>
-<figure><pre><code>STCategory &gt;&gt; title
+<figure><pre><code>GMCategory &gt;&gt; title
 	^ title</code></pre><figcaption></figcaption></figure>
-<figure><pre><code>STCategory &gt;&gt; title: aString
+<figure><pre><code>GMCategory &gt;&gt; title: aString
 	title := aString</code></pre><figcaption></figcaption></figure>
+
+<p>
+Also a class side title.
+</p>
+<figure><pre><code>GMCategory class &gt;&gt; title
+	^ 'Categories'</code></pre><figcaption></figcaption></figure>
 
 <p>
 And we need to add the description for Magritte.
 </p>
-<figure><pre><code>STManagerApp &gt;&gt; descriptionTitle
+<figure><pre><code>GameManager &gt;&gt; descriptionTitle
 	&lt;magritteDescription&gt;
 	^ MAStringDescription new
-		label: 'title';
+		label: 'Title';
 		accessor: #title;
+		beRequired;
+		requiredErrorMessage: 'We cannot proceed without a title.';
 		priority: 100;
 		yourself</code></pre><figcaption></figcaption></figure>
 
 <p>
 Now we can add our new class to the <code>menuEntries</code> in <code>STManager</code>.
 </p>
-<figure><pre><code>STManagerApp &gt;&gt; initialize
+<figure><pre><code>GameManager &gt;&gt; initialize
 	super initialize.
 	
 	&quot;Here you can choose your login object&quot;
@@ -292,15 +300,194 @@ Now we can add our new class to the <code>menuEntries</code> in <code>STManager<
 	
 	&quot;Here you can define your application menu&quot;
 	menuEntries := {
-		STListAction on: STGameCategory title: 'Categories'
+		STListAction on: GMCategory title: 'Categories'
 	}</code></pre><figcaption></figcaption></figure>
 
 
 <p>
 After all is done, you can open a Playground then type and execute this code :
-</p><figure><pre><code>STManagerApp startOn: 8181.</code></pre><figcaption></figcaption></figure>
+</p><figure><pre><code>GameManager startOn: 8181.</code></pre><figcaption></figcaption></figure>
 
 <a id="note This will create a ==ZnZincServerAdaptor== server on port 8181 and initialize the web application."></a>
+<p>
+Now you can use your favorite browser and go at this address : <a href="http://localhost:8181/Game Manager">localhost:8181/Game Manager</a>.
+</p>
+<h2>More complex Object</h2>
+
+<p>
+We can now create a new STObject subclass which will contain a GMCategory object.
+</p>
+<figure><pre><code>STObject subclass: #GMGame
+	instanceVariableNames: 'title category rating'
+	classVariableNames: ''
+	package: 'Steam-Game-Manager'</code></pre><figcaption></figcaption></figure>
+
+<p>
+Accessors..
+</p>
+<figure><pre><code>GMGame &gt;&gt; title
+	^ title</code></pre><figcaption></figcaption></figure>
+<figure><pre><code>GMGame &gt;&gt; title: aString
+	title := aString</code></pre><figcaption></figcaption></figure>
+
+<figure><pre><code>GMGame &gt;&gt; category
+	^ category</code></pre><figcaption></figcaption></figure>
+<figure><pre><code>GMGame &gt;&gt; category: aGMCategory
+	category := aGMCategory</code></pre><figcaption></figcaption></figure>
+
+<figure><pre><code>GMGame &gt;&gt; rating
+	^ rating</code></pre><figcaption></figcaption></figure>
+<figure><pre><code>GMGame &gt;&gt; rating: aNumber
+	rating := aNumber</code></pre><figcaption></figcaption></figure>
+
+<p>
+A class side title.
+</p>
+<figure><pre><code>GMCategory class &gt;&gt; title
+	^ 'Games'</code></pre><figcaption></figcaption></figure>
+
+<p>
+And the descriptions.
+</p>
+<figure><pre><code>GMGame &gt;&gt; descriptionTitle
+	&lt;magritteDescription&gt;
+	^ MAStringDescription new
+		label: 'Title';
+		accessor: #title;
+		priority: 10;
+		beSearchField;
+		beRequired;
+		requiredErrorMessage: 'We cannot proceed without a title.';
+		componentClass: TBSMagritteTextInputComponent;
+		yourself</code></pre><figcaption></figcaption></figure>
+
+<figure><pre><code>GMGame &gt;&gt; descriptionCategory
+	&lt;magritteDescription&gt;
+	^ MASingleOptionDescription new
+		label: 'Category';
+		accessor: #category;
+		priority: 20;
+		options: ([steamApplication queryAll: GMCategory] on: Error do: [ nil ] );
+		comment: 'Select a category';
+		beSorted;
+		componentClass: TBSMagritteSelectListComponent;
+		requiredErrorMessage: 'You have to create a new category.';
+		beRequired;
+		beSearchField;
+		propertyAt: #STObjectClass put: STGameCategory;
+		yourself</code></pre><figcaption></figcaption></figure>
+
+<figure><pre><code>GMGame &gt;&gt; descriptionRating
+	&lt;magritteDescription&gt;
+	^ MANumberDescription new
+		priority: 30;
+		label: 'Rating';
+		accessor: #rating;
+		comment: 'Game''s rating';
+		min: 1;
+		max: 10;
+		beRequired;
+		beSearchField;
+		yourself</code></pre><figcaption></figcaption></figure>
+
+<p>
+Add our new class to the <code>menuEntries</code>.
+</p>
+<figure><pre><code>GameManager &gt;&gt; initialize
+	super initialize.
+	
+	&quot;Here you can choose your login object&quot;
+	login := STExampleLogin on: self.
+	
+	&quot;Here you can define your application menu&quot;
+	menuEntries := {
+		STListAction on: GMGame title: 'Games'.
+		STListAction on: GMCategory title: 'Categories'
+	}</code></pre><figcaption></figcaption></figure>
+
+<p>
+On your web page create a new session by clicking on &quot;New Session&quot; on the bottom left of the page in order to see the modifications.
+</p>
+<h2>Search Component</h2>
+
+<p>
+Now we will create a new component to search a string match in games, let's call it <code>GMSearchGameByTitle</code>.
+</p>
+<figure><pre><code>STObject subclass: #GMSearchGameByTitle
+	instanceVariableNames: 'results searchValue'
+	classVariableNames: ''
+	package: 'Steam-Game-Manager'</code></pre><figcaption></figcaption></figure>
+
+<p>
+Override <code>initialize</code> and <code>title</code>.
+</p>
+<figure><pre><code>GMSearchGameByTitle &gt;&gt; initialize
+	super initialize.
+	results := #()</code></pre><figcaption></figcaption></figure>
+
+<figure><pre><code>GMSearchGameByTitle &gt;&gt; title
+	&quot;this search component has no title&quot;
+
+	^ ''</code></pre><figcaption></figcaption></figure>
+
+<p>
+Add accessors..
+</p>
+<figure><pre><code>GMSearchGameByTitle &gt;&gt; results
+	^ results</code></pre><figcaption></figcaption></figure>
+<figure><pre><code>GMSearchGameByTitle &gt;&gt; results: anObject
+	results := anObject</code></pre><figcaption></figcaption></figure>
+
+<figure><pre><code>GMSearchGameByTitle &gt;&gt; searchValue
+	^ searchValue</code></pre><figcaption></figcaption></figure>
+<figure><pre><code>GMSearchGameByTitle &gt;&gt; searchValue: anObject
+	searchValue := anObject</code></pre><figcaption></figcaption></figure>
+
+<p>
+Add the descriptions.
+</p>
+<figure><pre><code>GMSearchGameByTitle &gt;&gt; descriptionResults
+	&lt;magritteDescription&gt;
+	^ MAToManyRelationDescription new
+		label: 'Games';
+		accessor: #results;
+		beSearchResult;
+		yourself</code></pre><figcaption></figcaption></figure>
+<figure><pre><code>GMSearchGameByTitle &gt;&gt; descriptionSearchField
+	&lt;magritteDescription&gt;
+	^ MAStringDescription new
+		accessor: #searchValue;
+		beSearchField;
+		comment: 'Search for games';
+		beRequired;
+		yourself</code></pre><figcaption></figcaption></figure>
+
+<p>
+And to finish the action method <code>search</code>.
+</p>
+<figure><pre><code>GMSearchGameByTitle &gt;&gt; search
+	results := (steamApplication query: GMGame with: searchValue)</code></pre><figcaption></figcaption></figure>
+
+<p>
+Add our new class to the <code>menuEntries</code>.
+</p>
+<figure><pre><code>GameManager &gt;&gt; initialize
+	super initialize.
+	
+	&quot;Here you can choose your login object&quot;
+	login := STExampleLogin on: self.
+	
+	&quot;Here you can define your application menu&quot;
+	menuEntries := {
+		STListAction on: GMGame title: 'Games'.
+		STListAction on: GMCategory title: 'Categories'.
+		STSearchAction on: (GMSearchGameByTitle onSteamApplication: self) title: 'Search Games'
+	}</code></pre><figcaption></figcaption></figure>
+
+<p>
+Again start a new session to see our new component :).
+
+</p>
 <h1>Single Sign On</h1>
 
 <p>

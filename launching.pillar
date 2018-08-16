@@ -12,44 +12,44 @@ First you need a Pharo 6.1 image, if you don't have it you can create a new one 
 
 !! Installation
 
-Open Iceberg and clone Steam's github repository.
+In the Pharo image open Iceberg and clone Steam's github repository.
 
+[[[
 url : https://github.com/guillep/steam.git
-
 repository : src
+]]]
 
 +Load Steam's Github repository with Iceberg>file://figures/iceberg.png|label=iceberg+
 
 Now you have to install the baseline of steam.
-It will download all needed packages.
+It will download all the needed packages.
 +Steam installation with Metacello>file://figures/metacello.png|width=100|label=metacello+
 
 
-@@note If Icebarg gives you the choice between load existing or incoming version you can choose the first one if the version is greater (higher).
-It will take few minutes (usually aroud 4 or 5 min).
+@@note If Iceberg gives you the choice between load existing or incoming version you can choose the first one if the version is greater (higher). It will take a few minutes (usually aroud 4 or 5 minutes).
 
 
-Ok that's it ! All you'll need is here, now you can continue with the initialization.
+Ok, this is it ! All you will need is here, now you can continue with the initialization.
 
 !! Steam application component
 
-First we need to create a subclass of ==STApplicationRootComponent==, you can name it ==STManagerApp== for example.
+First we need to create a subclass of ==STApplicationRootComponent==, you can name it ==GameManager== for example.
 [[[lab­el=­STApplicationRootComponent class|­lan­gua­ge=­Sma­lltalk|classDefinition=true
-STApplicationRootComponent subclass: #STManagerApp
+STApplicationRootComponent subclass: #GameManager
 	instanceVariableNames: ''
 	classVariableNames: ''
-	package: 'Steam-Example'
+	package: 'Steam-Game-Manager'
 ]]]
 
 To make it work we need to override some superclass methods.
 
 We begin with the initialization :
 [[[lab­el=­initialize|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
-STManagerApp >> initialize
+GameManager >> initialize
 	super initialize.
 	
 	"Here you can choose your login object"
-	login := STExampleLogin on: self.
+	login := STBasicLogin on: self.
 	
 	"Here you can define your application menu"
 	menuEntries := {}
@@ -59,25 +59,25 @@ STManagerApp >> initialize
 We need a title for our application.
 
 [[[lab­el=­app title|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
-STManagerApp >> title
+GameManager >> title
 	"title will be diplayed on each web application page"
 
-	^ 'Manager'
+	^ 'Game Manager'
 ]]]
 
-The applicationName is the url extention for your website.
+In the class side. The ==applicationName== is the url extention for your website.
 
 [[[lab­el=­app applicationName|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
-STManagerApp class >> applicationName
+GameManager class >> applicationName
 	"applicationName will be diplayed on the web application url"
 
-	^ 'Manager'
+	^ 'Game Manager'
 ]]]
 
 We also need te override the ==storeToUse== method to select the store we want to use.
 
 [[[lab­el=­app applicationName|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
-STManagerApp >> storeToUse
+GameManager >> storeToUse
 	^ STMemoryStore
 ]]]
 
@@ -86,35 +86,44 @@ STManagerApp >> storeToUse
 
 !! Simple Object
 
-Now let's create a simple new STObject subclass. For example let's call it ==STCategory==. With a inctance variable ==title== which will be just a string representing the title.
+Now let's create a simple new STObject subclass. For example let's call it ==GMCategory==. With a inctance variable ==title== which will be just a string representing the title.
 
-[[[lab­el=­|­lan­gua­ge=­Sma­lltalk|classDefinition=true
-STObject subclass: #STCategory
+[[[lab­el=­GMCategory class|­lan­gua­ge=­Sma­lltalk|classDefinition=true
+STObject subclass: #GMCategory
 	instanceVariableNames: 'title'
 	classVariableNames: ''
-	package: 'Steam-Example'
+	package: 'Steam-Game-Manager'
 ]]]
 
 
 Add accessors.
 
 [[[lab­el=­ accessors|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
-STCategory >> title
+GMCategory >> title
 	^ title
 ]]]
 [[[lab­el=­ accessors|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
-STCategory >> title: aString
+GMCategory >> title: aString
 	title := aString
+]]]
+
+Also a class side title.
+
+[[[lab­el=­ accessors|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+GMCategory class >> title
+	^ 'Categories'
 ]]]
 
 And we need to add the description for Magritte.
 
 [[[lab­el=­ descriptionTitle|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
-STManagerApp >> descriptionTitle
+GameManager >> descriptionTitle
 	<magritteDescription>
 	^ MAStringDescription new
-		label: 'title';
+		label: 'Title';
 		accessor: #title;
+		beRequired;
+		requiredErrorMessage: 'We cannot proceed without a title.';
 		priority: 100;
 		yourself
 ]]]
@@ -122,7 +131,7 @@ STManagerApp >> descriptionTitle
 Now we can add our new class to the ==menuEntries== in ==STManager==.
 
 [[[lab­el=­initialize|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
-STManagerApp >> initialize
+GameManager >> initialize
 	super initialize.
 	
 	"Here you can choose your login object"
@@ -130,14 +139,224 @@ STManagerApp >> initialize
 	
 	"Here you can define your application menu"
 	menuEntries := {
-		STListAction on: STGameCategory title: 'Categories'
+		STListAction on: GMCategory title: 'Categories'
 	}
 ]]]
 
 
 After all is done, you can open a Playground then type and execute this code :
 [[[lab­el=­start|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
-STManagerApp startOn: 8181.
+GameManager startOn: 8181.
 ]]]
 
 @note This will create a ==ZnZincServerAdaptor== server on port 8181 and initialize the web application.
+
+Now you can use your favorite browser and go at this address : *localhost:8181/Game Manager>http://localhost:8181/Game Manager*.
+
+!! More complex Object
+
+We can now create a new STObject subclass which will contain a GMCategory object.
+
+[[[lab­el=­GMGame class|­lan­gua­ge=­Sma­lltalk|classDefinition=true
+STObject subclass: #GMGame
+	instanceVariableNames: 'title category rating'
+	classVariableNames: ''
+	package: 'Steam-Game-Manager'
+]]]
+
+Accessors..
+
+[[[lab­el=­ accessors|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+GMGame >> title
+	^ title
+]]]
+[[[lab­el=­ accessors|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+GMGame >> title: aString
+	title := aString
+]]]
+
+[[[lab­el=­ accessors|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+GMGame >> category
+	^ category
+]]]
+[[[lab­el=­ accessors|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+GMGame >> category: aGMCategory
+	category := aGMCategory
+]]]
+
+[[[lab­el=­ accessors|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+GMGame >> rating
+	^ rating
+]]]
+[[[lab­el=­ accessors|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+GMGame >> rating: aNumber
+	rating := aNumber
+]]]
+
+A class side title.
+
+[[[lab­el=­ accessors|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+GMCategory class >> title
+	^ 'Games'
+]]]
+
+And the descriptions.
+
+[[[lab­el=­ descriptionTitle|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+GMGame >> descriptionTitle
+	<magritteDescription>
+	^ MAStringDescription new
+		label: 'Title';
+		accessor: #title;
+		priority: 10;
+		beSearchField;
+		beRequired;
+		requiredErrorMessage: 'We cannot proceed without a title.';
+		componentClass: TBSMagritteTextInputComponent;
+		yourself
+]]]
+
+[[[lab­el=­ descriptionCategory|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+GMGame >> descriptionCategory
+	<magritteDescription>
+	^ MASingleOptionDescription new
+		label: 'Category';
+		accessor: #category;
+		priority: 20;
+		options: ([steamApplication queryAll: GMCategory] on: Error do: [ nil ] );
+		comment: 'Select a category';
+		beSorted;
+		componentClass: TBSMagritteSelectListComponent;
+		requiredErrorMessage: 'You have to create a new category.';
+		beRequired;
+		beSearchField;
+		propertyAt: #STObjectClass put: STGameCategory;
+		yourself
+]]]
+
+[[[lab­el=­ descriptionRating|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+GMGame >> descriptionRating
+	<magritteDescription>
+	^ MANumberDescription new
+		priority: 30;
+		label: 'Rating';
+		accessor: #rating;
+		comment: 'Game''s rating';
+		min: 1;
+		max: 10;
+		beRequired;
+		beSearchField;
+		yourself
+]]]
+
+Add our new class to the ==menuEntries==.
+
+[[[lab­el=­initialize|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+GameManager >> initialize
+	super initialize.
+	
+	"Here you can choose your login object"
+	login := STExampleLogin on: self.
+	
+	"Here you can define your application menu"
+	menuEntries := {
+		STListAction on: GMGame title: 'Games'.
+		STListAction on: GMCategory title: 'Categories'
+	}
+]]]
+
+On your web page create a new session by clicking on "New Session" on the bottom left of the page in order to see the modifications.
+
+!! Search Component
+
+Now we will create a new component to search a string match in games, let's call it ==GMSearchGameByTitle==.
+
+[[[lab­el=­GMSearchGameByTitle class|­lan­gua­ge=­Sma­lltalk|classDefinition=true
+STObject subclass: #GMSearchGameByTitle
+	instanceVariableNames: 'results searchValue'
+	classVariableNames: ''
+	package: 'Steam-Game-Manager'
+]]]
+
+Override ==initialize== and ==title==.
+
+[[[lab­el=­ init|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+GMSearchGameByTitle >> initialize
+	super initialize.
+	results := #()
+]]]
+
+[[[lab­el=­ accessors|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+GMSearchGameByTitle >> title
+	"this search component has no title"
+
+	^ ''
+]]]
+
+Add accessors..
+
+[[[lab­el=­ accessors|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+GMSearchGameByTitle >> results
+	^ results
+]]]
+[[[lab­el=­ accessors|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+GMSearchGameByTitle >> results: anObject
+	results := anObject
+]]]
+
+[[[lab­el=­ accessors|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+GMSearchGameByTitle >> searchValue
+	^ searchValue
+]]]
+[[[lab­el=­ accessors|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+GMSearchGameByTitle >> searchValue: anObject
+	searchValue := anObject
+]]]
+
+Add the descriptions.
+
+[[[lab­el=­ description|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+GMSearchGameByTitle >> descriptionResults
+	<magritteDescription>
+	^ MAToManyRelationDescription new
+		label: 'Games';
+		accessor: #results;
+		beSearchResult;
+		yourself
+]]]
+[[[lab­el=­ description|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+GMSearchGameByTitle >> descriptionSearchField
+	<magritteDescription>
+	^ MAStringDescription new
+		accessor: #searchValue;
+		beSearchField;
+		comment: 'Search for games';
+		beRequired;
+		yourself
+]]]
+
+And to finish the action method ==search==.
+
+[[[lab­el=­ action|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+GMSearchGameByTitle >> search
+	results := (steamApplication query: GMGame with: searchValue)
+]]]
+
+Add our new class to the ==menuEntries==.
+
+[[[lab­el=­initialize|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+GameManager >> initialize
+	super initialize.
+	
+	"Here you can choose your login object"
+	login := STExampleLogin on: self.
+	
+	"Here you can define your application menu"
+	menuEntries := {
+		STListAction on: GMGame title: 'Games'.
+		STListAction on: GMCategory title: 'Categories'.
+		STSearchAction on: (GMSearchGameByTitle onSteamApplication: self) title: 'Search Games'
+	}
+]]]
+
+Again start a new session to see our new component :).

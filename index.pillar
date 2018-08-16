@@ -7,19 +7,18 @@
 
 ! Introduction
 
-Steam is a framework that uses meta-description to create quickly web applications in Seaside and generate automatically other concerns like persistence. Steam uses Seaside, an open source framework of choice for developing sophisticated and dynamic web applications. Seaside uses the power of objects to master the web. Seaside is based on Smalltalk (like Pharo).
++Steam's preview>file://figures/final_preview.png|label=steamdiagram|width=100+
+
+Steam is a framework that uses meta-description to create quickly web applications in Seaside and generate automatically other concerns like persistence. Steam uses Seaside, an open source framework of choice for developing sophisticated and dynamic web applications. Seaside uses the power of objects to master the web. Seaside is based on Smalltalk (like *Pharo>http://pharo.org/web*).
 
 +Steam's conceptual diagram>file://figures/steam_conceptual_diagram.png|label=steamdiagram+
 
-@@note Pharo is a pure object-oriented programming language and a powerful environment, focused on simplicity and immediate feedback (think Integrated Development Environment (IDE) and Operating System (OS) rolled into one).
+@@note *Pharo>http://pharo.org/web* is a pure object-oriented programming language and a powerful environment, focused on simplicity and immediate feedback (think Integrated Development Environment (IDE) and Operating System (OS) rolled into one).
 
-In this tutorial we will see how we create a website and display/manage basic objects thanks to Steam framework.
+In this tutorial we will see how we create a website and display/manage basic, then more complex objects thanks to Steam framework.
 
-To make it work we will need to extend some classes as ==STApplicationRootComponent== to create the main component that defines your application and ==STObject== which will be your objects you want to manage.
+To make use the framework we will need to extend some classes as ==STApplicationRootComponent== to create the main component that defines your application and ==STObject== which will be the objects you want to manage.
 
 For instance we will create two classes ==GMCategory== and ==GMGame== and add some methodes like this.
 
-+STObjects subclasses>file://figures/stobject_subclasses_uml.png|label=stobjects+
-
-
-
++STObjects subclasses>file://figures/stobject_subclasses_uml.png|label=stobjects|width=35+
