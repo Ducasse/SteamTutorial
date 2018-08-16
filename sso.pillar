@@ -23,10 +23,10 @@ For the ""Authorised redirect URIs"" put ==http://localhost:8181/oauth2callback=
 
 +Google OAuth finalization>file://figures/finialization_google_oauth.png|width=100|label=google+
 
-After clicking on ""Create"" you will need to copy and paste the ""client ID"" to key and ""client secret"" to secret in ==STManager== class side.
+After clicking on ""Create"" you will need to copy and paste the ""client ID"" to key and ""client secret"" to secret in ==GameManager== class side.
 
 [[[lab­el=­sso|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
-STManager class >> oauthHandlers
+GameManager class >> oauthHandlers
 	^ {(STGoogleAuthHandler
 		key: '' "paste client ID here"
 		secret: '' "paste client secret here"
@@ -36,7 +36,7 @@ STManager class >> oauthHandlers
 And we also have to initialize our class so it can be taken into account.
 
 [[[lab­el=­init|­lan­gua­ge=­Sma­lltalk
-STManager initialize.
+GameManager initialize.
 ]]]
 
 You should be able to authentify yourself with google.
@@ -52,10 +52,10 @@ For the ""Application name"" you can put "Manager", for ""Homepage URL"" put "ht
 
 +Github OAuth finalization>file://figures/finialization_github_oauth.png|width=100|label=github+
 
-After clicking on ""Register application"" you will need to copy and paste the ""client ID"" to key and ""client secret"" to secret in ==STManager== class side.
+After clicking on ""Register application"" you will need to copy and paste the ""client ID"" to key and ""client secret"" to secret in ==GameManager== class side.
 
 [[[lab­el=­sso|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
-STManager class >> oauthHandlers
+GameManager class >> oauthHandlers
 	^ {(STGoogleAuthHandler
 		key: '' "google client ID"
 		secret: '' "google client secret"
@@ -69,7 +69,7 @@ STManager class >> oauthHandlers
 Again don't forget to initialize our class so it can be taken into account.
 
 [[[lab­el=­init|­lan­gua­ge=­Sma­lltalk
-STManager initialize.
+GameManager initialize.
 ]]]
 
 Google and GitHub should work now.
