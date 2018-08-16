@@ -136,6 +136,9 @@ video {
   height: auto;
   max-width: 100%;
   display: block;
+	margin: auto;
+	box-shadow: grey 2px 2px 2px 2px;
+	border-radius: 1px;
 }
 
 video {
