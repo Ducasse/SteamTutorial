@@ -9,26 +9,27 @@
 
 In this section we will learn how to use ""MongoDB"" (a document-oriented database) and ""PostgreSQL"" (a object-relational database system).
 
-!! Mongo
+!!Installation
+
+!!! Mongo
 
 To begin with you have to install it on your computer first. You can find a documentation *here>https://docs.mongodb.com/manual/administration/install-community/*.
 
 Then to run it, open a terminal and execute ==mongod== you may need to put sudo before ==sudo mongod==.
 
+!!!PostgreSQL
 
-!! PostgreSQL
+For PostgreSql you can find a documentation *here>https://www.postgresql.org/download/*.
 
-For PgSql you can find a documentation *here>https://www.postgresql.org/download/*.
+!!Choose the store
 
-#Choose the store
+This is very easy, you just have to change the method ==GameManager >> storeToUse== to return the store you want to use : ==STMongoStore== or ==STPostgresSQLStore==.
 
-This is very easy, you just have to change the method ==STManager >> storeToUse== to return the store you want to use : ==STMongoStore== or ==STPostgresSQLStore==.
-
-!! Configure STPostgresSQLStore
+!! Configure PostgreSQL Store
 
 To configure the STPostgresSQLStore you have to change the ==STPostgresSQLStore class >> login== method.
 [[[lab­el=­pgsql login|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
-login
+STPostgresSQLStore class >> login
 	^ Login new
 		database: PostgreSQLPlatform new;
 		"here use the username you picked when installed PgSQL"
@@ -41,7 +42,7 @@ login
 		encodingStrategy: #utf8.
 ]]]
 
-After the installation and configuration of the store you have to create tables by executing ==STManager new createTables==
+After the installation and configuration of the store you have to create tables by executing ==GameManager new store createTables==
 
-@@note If you want to drop tables you can run ==STManager new dropTables==.
+@@note If you want to drop tables you can run ==GameManager new store dropTables==.
 

@@ -1,0 +1,18 @@
+{ "profile" : [
+	{ "name"	: "Steam",
+		"avatar": "avatar.png",
+		"firm"	: "Resources" }
+	]
+}
+
+
+!Resources
+
+!!!Steam Github repository
+
+*https://github.com/guillep/steam*
+
+!!!OAuth/SSO Github repository
+
+*https://github.com/svenvc/docs/blob/master/zinc/zinc-sso-paper.md*
+
