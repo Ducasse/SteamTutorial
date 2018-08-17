@@ -105,8 +105,8 @@
         </li>
 		
         <li class="nav-item">
-          <a href="/SteamTutorial/coordinates.html#coordinates">
-            <span>Coordinates</span>
+          <a href="/SteamTutorial/resources.html#resources">
+            <span>Resources</span>
           </a>
         </li>
 		
@@ -581,7 +581,9 @@ Google and GitHub should work now.
 <p>
 In this section we will learn how to use <strong>MongoDB</strong> (a document-oriented database) and <strong>PostgreSQL</strong> (a object-relational database system).
 </p>
-<h2>Mongo</h2>
+<h2>Installation</h2>
+
+<h3>Mongo</h3>
 
 <p>
 To begin with you have to install it on your computer first. You can find a documentation <a href="https://docs.mongodb.com/manual/administration/install-community/">here</a>.
@@ -589,23 +591,21 @@ To begin with you have to install it on your computer first. You can find a docu
 <p>
 Then to run it, open a terminal and execute <code>mongod</code> you may need to put sudo before <code>sudo mongod</code>.
 </p>
-
-<h2>PostgreSQL</h2>
-
-<p>
-For PgSql you can find a documentation <a href="https://www.postgresql.org/download/">here</a>.
-</p>
-<ol><li>Choose the store</li>
-</ol>
+<h3>PostgreSQL</h3>
 
 <p>
-This is very easy, you just have to change the method <code>STManager &gt;&gt; storeToUse</code> to return the store you want to use : <code>STMongoStore</code> or <code>STPostgresSQLStore</code>.
+For PostgreSql you can find a documentation <a href="https://www.postgresql.org/download/">here</a>.
 </p>
-<h2>Configure STPostgresSQLStore</h2>
+<h2>Choose the store</h2>
+
+<p>
+This is very easy, you just have to change the method <code>GameManager &gt;&gt; storeToUse</code> to return the store you want to use : <code>STMongoStore</code> or <code>STPostgresSQLStore</code>.
+</p>
+<h2>Configure PostgreSQL Store</h2>
 
 <p>
 To configure the STPostgresSQLStore you have to change the <code>STPostgresSQLStore class &gt;&gt; login</code> method.
-</p><figure><pre><code>login
+</p><figure><pre><code>STPostgresSQLStore class &gt;&gt; login
 	^ Login new
 		database: PostgreSQLPlatform new;
 		&quot;here use the username you picked when installed PgSQL&quot;
@@ -618,33 +618,23 @@ To configure the STPostgresSQLStore you have to change the <code>STPostgresSQLSt
 		encodingStrategy: #utf8.</code></pre><figcaption></figcaption></figure>
 
 <p>
-After the installation and configuration of the store you have to create tables by executing <code>STManager new createTables</code>
+After the installation and configuration of the store you have to create tables by executing <code>GameManager new store createTables</code>
 </p>
-<p class="note">If you want to drop tables you can run <code>STManager new dropTables</code>.</p>
+<p class="note">If you want to drop tables you can run <code>GameManager new store dropTables</code>.</p>
 
-<h1>Coordinates</h1>
+<h1>Resources</h1>
+
+<h3>Steam Github repository</h3>
 
 <p>
-Contact me. I'm open for collaborations.
-All that you need about lost people.
-I will help you find them
+<a href="https://github.com/guillep/steam">https://github.com/guillep/steam</a>
 </p>
-<h2>Email</h2>
+<h3>OAuth/SSO Github repository</h3>
 
 <p>
-johndoe@mail.com
+<a href="https://github.com/svenvc/docs/blob/master/zinc/zinc-sso-paper.md">https://github.com/svenvc/docs/blob/master/zinc/zinc-sso-paper.md</a>
 </p>
-<h2>Snail mail / Visits</h2>
 
-<p>
-
-Space Laboratory - J. Doe, 1500, avenue des Disparus,<br/>
-Parc d'Attraction,<br/>
-France<br/>
-Tel:33 (0)0 00 00 00 00<br/>
-Fax:33 (0)8 88 88 88 88<br/>
-
-</p>
 
 </p>
 
