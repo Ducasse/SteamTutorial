@@ -1,12 +1,12 @@
 { "profile" : [
 	{ "name"	: "Steam",
 		"avatar": "avatar.png",
-		"firm"	: "Launching" }
+		"firm"	: "Getting Started" }
 	]
 }
 
 
-! Launching
+! Getting Started
 
 First you need a Pharo 6.1 image, if you don't have it you can create a new one with *Pharo Launcher>https://pharo.org/download*.
 
@@ -86,7 +86,7 @@ GameManager >> storeToUse
 
 !! Simple Object
 
-Now let's create a simple new STObject subclass. For example let's call it ==GMCategory==. With a inctance variable ==title== which will be just a string representing the title.
+Now let's create a simple new STObject subclass. For example let's call it ==GMCategory==. With a instance variable ==title== which will be just a string representing the title.
 
 [[[lab­el=­GMCategory class|­lan­gua­ge=­Sma­lltalk|classDefinition=true
 STObject subclass: #GMCategory
