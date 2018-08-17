@@ -19,6 +19,6 @@ In this tutorial we will see how we create a website and display/manage basic, t
 
 To make use the framework we will need to extend some classes as ==STApplicationRootComponent== to create the main component that defines your application and ==STObject== which will be the objects you want to manage.
 
-For instance we will create two classes ==GMCategory== and ==GMGame== and add some methodes like this.
+For instance we will create two classes ==GMCategory== and ==GMGame== and add some methods like this.
 
 +STObjects subclasses>file://figures/stobject_subclasses_uml.png|label=stobjects|width=35+
