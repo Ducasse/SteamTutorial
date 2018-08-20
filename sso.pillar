@@ -39,6 +39,8 @@ And we also have to initialize our class so it can be taken into account.
 GameManager initialize.
 ]]]
 
++Google Authentification button>file://figures/google_auth.png|width=100|label=google_button+
+
 You should be able to authentify yourself with google.
 
 
@@ -71,5 +73,7 @@ Again don't forget to initialize our class so it can be taken into account.
 [[[lab­el=­init|­lan­gua­ge=­Sma­lltalk
 GameManager initialize.
 ]]]
+
++Google and Github Authentification button>file://figures/google+github_auth.png|width=100|label=google_and_github_button+
 
 Google and GitHub should work now.

@@ -269,7 +269,7 @@ On your web page create a new session by clicking on "New Session" on the bottom
 
 !! Search Component
 
-Now we will create a new component to search a string match in games, let's call it ==GMSearchGameByTitle==.
+Now we will create a new component to search a string match in games, let's call it ==GMSearchGameByTitle==. This component will query in the database and show all the games which satisfy the request.
 
 [[[lab­el=­GMSearchGameByTitle class|­lan­gua­ge=­Sma­lltalk|classDefinition=true
 STObject subclass: #GMSearchGameByTitle
@@ -358,5 +358,7 @@ GameManager >> initialize
 		STSearchAction on: (GMSearchGameByTitle onSteamApplication: self) title: 'Search Games'
 	}
 ]]]
+
+@@note This component is a subclass of ==STSearchAction== because it has a different behaviour unlike the ==GMGame== and ==GMCategory== classes.
 
 Again start a new session to see our new component :).
