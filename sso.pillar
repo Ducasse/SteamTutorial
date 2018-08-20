@@ -74,6 +74,6 @@ Again don't forget to initialize our class so it can be taken into account.
 GameManager initialize.
 ]]]
 
-+Google and Github Authentification button>file://figures/google+github_auth.png|width=100|label=google_and_github_button+
++Google and Github Authentification button>file://figures/google_github_auth.png|width=100|label=google_and_github_button+
 
 Google and GitHub should work now.

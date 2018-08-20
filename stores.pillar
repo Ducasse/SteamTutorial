@@ -13,36 +13,57 @@ In this section we will learn how to use ""MongoDB"" (a document-oriented databa
 
 !!! Mongo
 
+Steam uses ""*Voyage>https://github.com/pharo-nosql/voyage*"" as a layer between the objects and a persistency mechanism for Mongo. Voyage is a persistence framework.
+
 To begin with you have to install it on your computer first. You can find a documentation *here>https://docs.mongodb.com/manual/administration/install-community/*.
 
 Then to run it, open a terminal and execute ==mongod== you may need to put sudo before ==sudo mongod==.
 
+@@note With voyage we can store easily objects even complex ones because MongoDB is a document-oriented database.
+
 !!!PostgreSQL
+
+Steam uses *Glorp>https://guillep.github.io/DBXTalk/glorp.html* and *Garage>https://guillep.github.io/DBXTalk/garage/index.html* in order to support PostgreSQL. Glorp is the Object-Relational-Mapper for Smalltalk and Garage is the relational database driver for Pharo.
 
 For PostgreSql you can find a documentation *here>https://www.postgresql.org/download/*.
 
-!!Choose the store
+@@note With Glorp it's difficult to take advantage of object's inheritance, so we are limeted to store simple objects.
 
-This is very easy, you just have to change the method ==GameManager >> storeToUse== to return the store you want to use : ==STMongoStore== or ==STPostgresSQLStore==.
+!!Choose and Configure the Store
 
-!! Configure PostgreSQL Store
+This is very easy, you simply have to override the method ==GameManager >> createNewStore== to configure the store you want to use.
 
-To configure the STPostgresSQLStore you have to change the ==STPostgresSQLStore class >> login== method.
-[[[lab­el=­pgsql login|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
-STPostgresSQLStore class >> login
-	^ Login new
-		database: PostgreSQLPlatform new;
-		"here use the username you picked when installed PgSQL"
-		username: 'pierretsapliayeu';
-		"the password is optionnal but you can use one"
-		password: 'secret';
-		"connect string looks like hostname:portNumber_db-name.
-		:portNumber is optional"
-		connectString: 'localhost:5432_pierretsapliayeu';
-		encodingStrategy: #utf8.
+!!!Memory Store
+
+[[[lab­el=­memory store config|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+GameManager >> createNewStore
+	^ STMemoryStore on: self
 ]]]
 
-After the installation and configuration of the store you have to create tables by executing ==GameManager new store createTables==
+!!!Mongo Store
+
+[[[lab­el=­mongo store config|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+GameManager >> createNewStore
+	^ STMongoStore 
+		on: self 
+		host: 'localhost' "here the host url of your DB" 
+		database: 'steam' "here the name of your DB"
+]]]
+
+!!!PostgresSql Store
+
+[[[lab­el=­postgresql store config|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+GameManager >> createNewStore
+	^ STMemoryStore
+		on: self 
+		username: '' "your user name" 
+		password: '' "your password" 
+		host: 'localhost' "the host url of your DB" 
+		port: '5432' "the port you're using (optionnal)" 
+		database: '' "the name of the DB you're using"
+]]]
+
+After the installation and configuration of the PostgreSQL Store you have to create tables by executing ==GameManager new store createTables==
 
 @@note If you want to drop tables you can run ==GameManager new store dropTables==.
 
