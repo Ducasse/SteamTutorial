@@ -380,7 +380,7 @@ On your web page create a new session by clicking on &quot;New Session&quot; on 
 <h2>Search Component</h2>
 
 <p>
-Now we will create a new component to search a string match in games, let's call it <code>GMSearchGameByTitle</code>.
+Now we will create a new component to search a string match in games, let's call it <code>GMSearchGameByTitle</code>. This component will query in the database and show all the games which satisfy the request.
 </p>
 <figure><pre><code>STObject subclass: #GMSearchGameByTitle
 	instanceVariableNames: 'results searchValue'
@@ -453,6 +453,7 @@ Add our new class to the <code>menuEntries</code>.
 		STSearchAction on: (GMSearchGameByTitle onSteamApplication: self) title: 'Search Games'
 	}</code></pre><figcaption></figcaption></figure>
 
+<p class="note">This component is a subclass of <code>STSearchAction</code> because it has a different behaviour unlike the <code>GMGame</code> and <code>GMCategory</code> classes.</p>
 <p>
 Again start a new session to see our new component :).
 

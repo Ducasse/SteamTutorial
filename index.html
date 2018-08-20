@@ -148,7 +148,20 @@
 </figure>
 </p>
 <p>
-Steam is a framework that uses meta-description to create quickly web applications in Seaside and generate automatically other concerns like persistence. Steam uses Seaside, an open source framework of choice for developing sophisticated and dynamic web applications. Seaside uses the power of objects to master the web. Seaside is based on Smalltalk (like <a href="http://pharo.org/web">Pharo</a>).
+<strong>Steam</strong> is a framework that uses meta-description with <strong>Magritte</strong> to create quickly web applications in <strong>Seaside</strong> and generate automatically other concerns like persistence. 
+</p>
+<p>
+Thanks to Magritte and the meta-descriptions the forms are created automatically and you can specify options in order to create validations.
+</p>
+<p>
+<a id="validations"></a>
+<figure>
+	<img src="figures/form_validation.png" id="validations" alt="Form validations"/>
+	<figcaption>Form validations</figcaption>
+</figure>
+</p>
+<p>
+Steam uses Seaside, an open source framework of choice for developing sophisticated and dynamic web applications. Seaside uses the power of objects to master the web. Seaside is based on Smalltalk (like <a href="http://pharo.org/web">Pharo</a>).
 </p>
 <p>
 <a id="steamdiagram"></a>
@@ -170,11 +183,11 @@ For instance we will create two classes <code>GMCategory</code> and <code>GMGame
 <p>
 <a id="stobjects"></a>
 <figure>
-	<img src="figures/stobject_subclasses_uml.png" width="35%" id="stobjects" alt="STObjects subclasses"/>
+	<img src="figures/stobject_subclasses_uml.png" id="stobjects" alt="STObjects subclasses"/>
 	<figcaption>STObjects subclasses</figcaption>
 </figure>
-
 </p>
+<p class="note">The <code>descriptionTitle</code>, <code>descriptionCategory</code> and <code>descriptionRating</code> methods are Magritte description methods where you can specify how each variable must be displayed and validation options.</p>
 
   </div>
 </div>

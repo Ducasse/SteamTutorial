@@ -9,7 +9,13 @@
 
 +Steam's preview>file://figures/final_preview.png|label=steamdiagram|width=100+
 
-Steam is a framework that uses meta-description to create quickly web applications in Seaside and generate automatically other concerns like persistence. Steam uses Seaside, an open source framework of choice for developing sophisticated and dynamic web applications. Seaside uses the power of objects to master the web. Seaside is based on Smalltalk (like *Pharo>http://pharo.org/web*).
+""Steam"" is a framework that uses meta-description with ""Magritte"" to create quickly web applications in ""Seaside"" and generate automatically other concerns like persistence. 
+
+Thanks to Magritte and the meta-descriptions the forms are created automatically and you can specify options in order to create validations.
+
++Form validations>file://figures/form_validation.png|label=validations+
+
+Steam uses Seaside, an open source framework of choice for developing sophisticated and dynamic web applications. Seaside uses the power of objects to master the web. Seaside is based on Smalltalk (like *Pharo>http://pharo.org/web*).
 
 +Steam's conceptual diagram>file://figures/steam_conceptual_diagram.png|label=steamdiagram+
 
@@ -21,4 +27,6 @@ To make use the framework we will need to extend some classes as ==STApplication
 
 For instance we will create two classes ==GMCategory== and ==GMGame== and add some methods like this.
 
-+STObjects subclasses>file://figures/stobject_subclasses_uml.png|label=stobjects|width=35+
++STObjects subclasses>file://figures/stobject_subclasses_uml.png|label=stobjects+
+
+@@note The ==descriptionTitle==, ==descriptionCategory== and ==descriptionRating== methods are Magritte description methods where you can specify how each variable must be displayed and validation options.
