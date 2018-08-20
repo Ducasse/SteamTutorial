@@ -148,39 +148,55 @@ In this section we will learn how to use <strong>MongoDB</strong> (a document-or
 <h3>Mongo</h3>
 
 <p>
+Steam uses <strong><a href="https://github.com/pharo-nosql/voyage">Voyage</a></strong> as a layer between the objects and a persistency mechanism for Mongo. Voyage is a persistence framework.
+</p>
+<p>
 To begin with you have to install it on your computer first. You can find a documentation <a href="https://docs.mongodb.com/manual/administration/install-community/">here</a>.
 </p>
 <p>
 Then to run it, open a terminal and execute <code>mongod</code> you may need to put sudo before <code>sudo mongod</code>.
 </p>
+<p class="note">With voyage we can store easily objects even complex ones because MongoDB is a document-oriented database.</p>
 <h3>PostgreSQL</h3>
 
 <p>
+Steam uses <a href="https://guillep.github.io/DBXTalk/glorp.html">Glorp</a> and <a href="https://guillep.github.io/DBXTalk/garage/index.html">Garage</a> in order to support PostgreSQL. Glorp is the Object-Relational-Mapper for Smalltalk and Garage is the relational database driver for Pharo.
+</p>
+<p>
 For PostgreSql you can find a documentation <a href="https://www.postgresql.org/download/">here</a>.
 </p>
-<h2>Choose the store</h2>
+<p class="note">With Glorp it's difficult to take advantage of object's inheritance, so we are limeted to store simple objects.</p>
+<h2>Choose and Configure the Store</h2>
 
 <p>
-This is very easy, you just have to change the method <code>GameManager &gt;&gt; storeToUse</code> to return the store you want to use : <code>STMongoStore</code> or <code>STPostgresSQLStore</code>.
+This is very easy, you simply have to override the method <code>GameManager &gt;&gt; createNewStore</code> to configure the store you want to use.
 </p>
-<h2>Configure PostgreSQL Store</h2>
+<h3>Memory Store</h3>
+
+<figure><pre><code>GameManager &gt;&gt; createNewStore
+	^ STMemoryStore on: self</code></pre><figcaption></figcaption></figure>
+
+<h3>Mongo Store</h3>
+
+<figure><pre><code>GameManager &gt;&gt; createNewStore
+	^ STMongoStore 
+		on: self 
+		host: 'localhost' &quot;here the host url of your DB&quot; 
+		database: 'steam' &quot;here the name of your DB&quot;</code></pre><figcaption></figcaption></figure>
+
+<h3>PostgresSql Store</h3>
+
+<figure><pre><code>GameManager &gt;&gt; createNewStore
+	^ STMemoryStore
+		on: self 
+		username: '' &quot;your user name&quot; 
+		password: '' &quot;your password&quot; 
+		host: 'localhost' &quot;the host url of your DB&quot; 
+		port: '5432' &quot;the port you're using (optionnal)&quot; 
+		database: '' &quot;the name of the DB you're using&quot;</code></pre><figcaption></figcaption></figure>
 
 <p>
-To configure the STPostgresSQLStore you have to change the <code>STPostgresSQLStore class &gt;&gt; login</code> method.
-</p><figure><pre><code>STPostgresSQLStore class &gt;&gt; login
-	^ Login new
-		database: PostgreSQLPlatform new;
-		&quot;here use the username you picked when installed PgSQL&quot;
-		username: 'pierretsapliayeu';
-		&quot;the password is optionnal but you can use one&quot;
-		password: 'secret';
-		&quot;connect string looks like hostname:portNumber_db-name.
-		:portNumber is optional&quot;
-		connectString: 'localhost:5432_pierretsapliayeu';
-		encodingStrategy: #utf8.</code></pre><figcaption></figcaption></figure>
-
-<p>
-After the installation and configuration of the store you have to create tables by executing <code>GameManager new store createTables</code>
+After the installation and configuration of the PostgreSQL Store you have to create tables by executing <code>GameManager new store createTables</code>
 </p>
 <p class="note">If you want to drop tables you can run <code>GameManager new store dropTables</code>.</p>
 

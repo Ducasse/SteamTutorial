@@ -29,4 +29,4 @@ For instance we will create two classes ==GMCategory== and ==GMGame== and add so
 
 +STObjects subclasses>file://figures/stobject_subclasses_uml.png|label=stobjects+
 
-@@note The ==descriptionTitle==, ==descriptionCategory== and ==descriptionRating== methods are Magritte description methods where you can specify how each variable must be displayed and validation options.
+@@note The ==descriptionTitle==, ==descriptionCategory== and ==descriptionRating== methods are Magritte description methods where you can specify the way each variable must be displayed and validation options.
