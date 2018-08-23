@@ -456,8 +456,27 @@ Add our new class to the <code>menuEntries</code>.
 <p class="note">This component is a subclass of <code>STSearchAction</code> because it has a different behaviour unlike the <code>GMGame</code> and <code>GMCategory</code> classes.</p>
 <p>
 Again start a new session to see our new component :).
-
 </p>
+<h2>Magritte review</h2>
+
+<p>
+There is some examples of properties you can add in the magritte description and thier purpose.
+</p>
+<figure><pre><code>&quot;For the most of MADescription&quot;
+priority: 10 ; &quot;here you can use integer to define the order elements will be displayed&quot;
+beRequired ; &quot;specify if this can't be empty&quot;
+requiredErrorMessage: 'This can not be empty !!'; &quot;the message to show if the user does not fill out this form field&quot;
+beSorted ; &quot;specify if it can be sorted&quot;
+addCondition: [ :value | value &lt;= Date today ] labelled: 'You can select only today''s day or an ulterior day'; &quot;for example for dates&quot;
+comment: 'Select a category'; &quot;this is displayed near the form field&quot;
+
+&quot;For MANumberDescription&quot;
+min: 1; &quot;it defines the minimum and maximum that can be accepted&quot;
+max: 9;
+
+&quot;For MAReferenceDescription and subclasses&quot;
+options: #('Bern' 'Solothurn' 'Aargau'); &quot;so the user can choose one of these, (can be an array of any object)&quot;</code></pre><figcaption></figcaption></figure>
+
 
   </div>
 </div>
