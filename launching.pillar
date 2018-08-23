@@ -362,3 +362,24 @@ GameManager >> initialize
 @@note This component is a subclass of ==STSearchAction== because it has a different behaviour unlike the ==GMGame== and ==GMCategory== classes.
 
 Again start a new session to see our new component :).
+
+!!Magritte review
+
+There is some examples of properties you can add in the magritte description and thier purpose.
+
+[[[lab­el=­magritte examples|­lan­gua­ge=­Sma­lltalk
+"For the most of MADescription"
+priority: 10 ; "here you can use integer to define the order elements will be displayed"
+beRequired ; "specify if this can't be empty"
+requiredErrorMessage: 'This can not be empty !!'; "the message to show if the user does not fill out this form field"
+beSorted ; "specify if it can be sorted"
+addCondition: [ :value | value <= Date today ] labelled: 'You can select only today''s day or an ulterior day'; "for example for dates"
+comment: 'Select a category'; "this is displayed near the form field"
+
+"For MANumberDescription"
+min: 1; "it defines the minimum and maximum that can be accepted"
+max: 9;
+
+"For MAReferenceDescription and subclasses"
+options: #('Bern' 'Solothurn' 'Aargau'); "so the user can choose one of these, (can be an array of any object)"
+]]]
