@@ -380,6 +380,6 @@ comment: 'Select a category'; "this is displayed near the form field"
 min: 1; "it defines the minimum and maximum that can be accepted"
 max: 9;
 
-"For MAReferenceDescription and subclasses"
+"For MAReferenceDescription subclasses"
 options: #('Bern' 'Solothurn' 'Aargau'); "so the user can choose one of these, (can be an array of any object)"
 ]]]
