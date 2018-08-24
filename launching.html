@@ -168,7 +168,7 @@ It will download all the needed packages.
 </figure>
 </p>
 
-<p class="note">If Iceberg gives you the choice between load existing or incoming version you can choose the first one if the version is greater (higher). It will take a few minutes (usually aroud 4 or 5 minutes).</p>
+<p class="note">If Iceberg gives you the choice between load existing or incoming version you can choose the first one if the version is greater (higher). It will take a few minutes (usually around 4 or 5 minutes).</p>
 
 <p>
 Ok, this is it ! All you will need is here, now you can continue with the initialization.
@@ -213,17 +213,17 @@ In the class side. The <code>applicationName</code> is the url extention for you
 	^ 'Game Manager'</code></pre><figcaption></figcaption></figure>
 
 <p>
-We also need te override the <code>storeToUse</code> method to select the store we want to use.
+We also need to override the <code>createNewStore</code> method to select the store we want to use.
 </p>
-<figure><pre><code>GameManager &gt;&gt; storeToUse
-	^ STMemoryStore</code></pre><figcaption></figcaption></figure>
+<figure><pre><code>GameManager &gt;&gt; createNewStore
+	^ STMemoryStore on: self</code></pre><figcaption></figcaption></figure>
 
 <p class="note">For now we're using a memory store to begin with. This store is just a playbox, so every object which is stored will be lost if you start a new session.</p>
 
 <h2>Simple Object</h2>
 
 <p>
-Now let's create a simple new STObject subclass. For example let's call it <code>GMCategory</code>. With a instance variable <code>title</code> which will be just a string representing the title.
+Now let's create a simple new STObject subclass. For example let's call it <code>GMCategory</code>. With an instance variable <code>title</code> which will be just a string representing the title.
 </p>
 <figure><pre><code>STObject subclass: #GMCategory
 	instanceVariableNames: 'title'
