@@ -63,6 +63,14 @@ GameManager >> createNewStore
 		database: '' "the name of the DB you're using"
 ]]]
 
+Also we need to specify the classes we want to use like this :
+
+[[[lab­el=­postgresql store config|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+applicationClasses
+
+	^ {GMCategory. GMGame}
+]]]
+
 After the installation and configuration of the PostgreSQL Store you have to create tables by executing ==GameManager new store createTables==
 
 @@note If you want to drop tables you can run ==GameManager new store dropTables==.

@@ -230,7 +230,7 @@ GMGame >> descriptionCategory
 		requiredErrorMessage: 'You have to create a new category.';
 		beRequired;
 		beSearchField;
-		propertyAt: #STObjectClass put: STGameCategory;
+		propertyAt: #STObjectClass put: GMCategory; "the class to refer to"
 		yourself
 ]]]
 

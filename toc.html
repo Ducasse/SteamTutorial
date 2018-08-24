@@ -387,7 +387,7 @@ And the descriptions.
 		requiredErrorMessage: 'You have to create a new category.';
 		beRequired;
 		beSearchField;
-		propertyAt: #STObjectClass put: STGameCategory;
+		propertyAt: #STObjectClass put: GMCategory; &quot;the class to refer to&quot;
 		yourself</code></pre><figcaption></figcaption></figure>
 
 <figure><pre><code>GMGame &gt;&gt; descriptionRating
@@ -679,6 +679,13 @@ This is very easy, you simply have to override the method <code>GameManager &gt;
 		host: 'localhost' &quot;the host url of your DB&quot; 
 		port: '5432' &quot;the port you're using (optionnal)&quot; 
 		database: '' &quot;the name of the DB you're using&quot;</code></pre><figcaption></figcaption></figure>
+
+<p>
+Also we need to specify the classes we want to use like this :
+</p>
+<figure><pre><code>applicationClasses
+
+	^ {GMCategory. GMGame}</code></pre><figcaption></figcaption></figure>
 
 <p>
 After the installation and configuration of the PostgreSQL Store you have to create tables by executing <code>GameManager new store createTables</code>
