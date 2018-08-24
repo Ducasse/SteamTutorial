@@ -66,8 +66,7 @@ GameManager >> createNewStore
 Also we need to specify the classes we want to use like this :
 
 [[[lab­el=­postgresql store config|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
-applicationClasses
-
+GameManager >> applicationClasses
 	^ {GMCategory. GMGame}
 ]]]
 
