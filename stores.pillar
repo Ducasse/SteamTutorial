@@ -54,7 +54,7 @@ GameManager >> createNewStore
 
 [[[lab­el=­postgresql store config|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
 GameManager >> createNewStore
-	^ STMemoryStore
+	^ STPostgresSQLStore
 		on: self 
 		username: '' "your user name" 
 		password: '' "your password" 

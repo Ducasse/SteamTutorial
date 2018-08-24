@@ -187,7 +187,7 @@ This is very easy, you simply have to override the method <code>GameManager &gt;
 <h3>PostgresSql Store</h3>
 
 <figure><pre><code>GameManager &gt;&gt; createNewStore
-	^ STMemoryStore
+	^ STPostgresSQLStore
 		on: self 
 		username: '' &quot;your user name&quot; 
 		password: '' &quot;your password&quot; 
