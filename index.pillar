@@ -9,9 +9,9 @@
 
 +Steam's preview>file://figures/final_preview.png|label=steamdiagram|width=100+
 
-""Steam"" is a framework that uses meta-description with ""Magritte"" to create quickly web applications in ""Seaside"" and generate automatically other concerns like persistence. 
+""Steam"" is a framework that uses ""Magritte"" meta-description to quickly create web applications in ""Seaside"" and generate automatically other concerns like persistence. 
 
-Thanks to Magritte and the meta-descriptions the forms are created automatically and you can specify options in order to create validations.
+Thanks to Magritte and the meta-descriptions, forms are created automatically and you can specify options to create validations (as shown in Figure *@validations*).
 
 +Form validations>file://figures/form_validation.png|label=validations+
 
