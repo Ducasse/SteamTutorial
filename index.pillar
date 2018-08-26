@@ -9,7 +9,7 @@
 
 +Steam's preview>file://figures/final_preview.png|label=steamdiagram|width=100+
 
-!! What is Steam
+!! What is Steam?
 ""Steam"" is a framework that uses ""Magritte"" meta-description to quickly create web applications in ""Seaside"" and generate automatically other concerns like persistence. 
 
 Thanks to Magritte and the meta-descriptions, forms are created automatically and you can specify options to create validations (as shown in Figure *@validations*).
@@ -29,7 +29,8 @@ The idea behind Steam is to describe your domain model and based on such descrip
 +Steam's conceptual diagram>file://figures/steam_conceptual_diagram.png|label=steamdiagram+
 
 
-!! 
+!! Tutorial Overview 
+
 In this tutorial we will see how we create a website and display/manage basic, then more complex objects thanks to Steam framework.
 
 To make use the framework we will need to extend some classes as ==STApplicationRootComponent== to create the main component that defines your application and ==STObject== which will be the objects you want to manage.
