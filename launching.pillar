@@ -33,10 +33,9 @@ It will download all the needed packages.
 +Steam installation with Metacello>file://figures/metacello.png|width=100|label=metacello+
 
 
-@@note If Iceberg gives you the choice between load existing or incoming version you can choose the first one if the version is greater (higher). It will take a few minutes (usually around 4 or 5 minutes).
+@@note If Iceberg gives you the choice between load existing or incoming version you can choose the first one if the version is higher. It will take a few minutes (usually around 4 or 5 minutes).
 
-
-Ok, this is it ! All you will need is here, now you can continue with the initialization.
+Ok, this is it! All you will need is here, now you can continue with the initialization.
 
 !! Steam application component
 
@@ -51,7 +50,7 @@ STApplicationRootComponent subclass: #GameManager
 To make it work we need to override some superclass methods.
 
 We begin with the initialization :
-[[[lab­el=­initialize|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+[[[label=initialize|language=Smalltalk|methodDefinition=true
 GameManager >> initialize
 	super initialize.
 	
@@ -65,31 +64,28 @@ GameManager >> initialize
 
 We need a title for our application.
 
-[[[lab­el=­app title|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+[[[label=app title|language=Smalltalk|methodDefinition=true
 GameManager >> title
-	"title will be diplayed on each web application page"
-
-	^ 'Game Manager'
+   "title will be diplayed on each web application page"
+   ^ 'Game Manager'
 ]]]
 
 In the class side. The ==applicationName== is the url extention for your website.
 
-[[[lab­el=­app applicationName|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+[[[label=app applicationName|language=Smalltalk|methodDefinition=true
 GameManager class >> applicationName
-	"applicationName will be diplayed on the web application url"
-
-	^ 'Game Manager'
+   "applicationName will be diplayed on the web application url"
+   ^ 'Game Manager'
 ]]]
 
 We also need to override the ==createNewStore== method to select the store we want to use.
 
-[[[lab­el=­app applicationName|­lan­gua­ge=­Sma­lltalk|methodDefinition=true
+[[[label=app applicationName|language=Smalltalk|methodDefinition=true
 GameManager >> createNewStore
-	^ STMemoryStore on: self
+   ^ STMemoryStore on: self
 ]]]
 
 @@note For now we're using a memory store to begin with. This store is just a playbox, so every object which is stored will be lost if you start a new session.
-
 
 !! Simple Object
 
