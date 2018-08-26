@@ -12,7 +12,13 @@ First you need a Pharo 6.1 image, if you don't have it you can create a new one 
 
 !! Installation
 
-In the Pharo image open Iceberg and clone Steam's github repository.
+You can use the PharoWeb image since it contains many frameworks already loaded. 
+
+[[[
+curl http://get.pharo.org/vm61 | bash
+]]]
+
+In this image, open Iceberg and clone Steam's github repository.
 
 [[[
 url : https://github.com/guillep/steam.git
@@ -23,6 +29,7 @@ repository : src
 
 Now you have to install the baseline of steam.
 It will download all the needed packages.
+
 +Steam installation with Metacello>file://figures/metacello.png|width=100|label=metacello+
 
 
@@ -34,7 +41,7 @@ Ok, this is it ! All you will need is here, now you can continue with the initia
 !! Steam application component
 
 First we need to create a subclass of ==STApplicationRootComponent==, you can name it ==GameManager== for example.
-[[[lab­el=­STApplicationRootComponent class|­lan­gua­ge=­Sma­lltalk|classDefinition=true
+[[[label=STApplicationRootComponent class|language=Smalltalk|classDefinition=true
 STApplicationRootComponent subclass: #GameManager
 	instanceVariableNames: ''
 	classVariableNames: ''
